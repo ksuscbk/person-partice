@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>动画封装</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        button {
+            width: 80px;
+            height: 40px;
+            font: 400 20px/25px "simsun";
+            background-color: deepskyblue;
+            text-align: center;
+        }
+        .box1 {
+            height: 500px;
+            background-color: silver;
+        }
+        .box2 {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+        }
+        .box3 {
+            position: absolute;
+            top: 300px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <button>北京</button>
+    <button>山西</button>
+    <div class="box1">
+        <div class="box2">
+            千金散尽还复来
+        </div>
+        <div class="box3">
+            青莲也映明眸盈
+        </div>
+    </div>
+    <script>
+        // 定时器 + 动画原理 + 赋值和获取值
+        var btn = document.getElementsByTagName("button");
+        var div2 = document.getElementsByTagName("div")[1];
+        var div3 = document.getElementsByTagName("div")[2];
+
+        btn[0].onclick = function () {
+            // 无参函数绑定事件可以直接使用函数名
+            // 带参函数必须用匿名函数隔开
+            fn(div2,300);
+            fn(div3,300);
+        }
+
+
+        btn[1].onclick = function () {
+            fn(div2,500);
+            fn(div3,500);
+        }
+        // 参数   让谁移动   移动到哪      1个盒子1个定时器
+        function fn(element, target) {
+            element.timer = setInterval(function () {
+                element.style.left = element.offsetLeft + 10 + "px";
+                if (div2.offsetLeft === target) {
+                    clearInterval(element.timer);
+                }
+            }, 30)
+        }
+    </script>
+</body>
+</html>

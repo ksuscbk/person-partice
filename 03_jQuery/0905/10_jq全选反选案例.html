@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="j_cbAll">
+                    </th>
+                    <th>课程名称</th>
+                    <th>所属学院</th>
+                </tr>
+            </thead>
+            <tbody id="j_tb">
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>JavaScript</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>css</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>html</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>jQuery</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // 上面的选中，下面全选中，上面不选，下面全不选
+        $("thead input").click(function () {
+            $("#j_tb input").prop("checked",$("thead input").prop("checked"));
+        });
+
+
+        // 下面的全选，上面的选中，下面有一个不选，上面不选
+        $("tbody input").click(function () {
+            var aInp = $("tbody input").length;
+            var aChe = $("tbody input:checked").length;
+            /*if (aInp == aChe) {
+                $("thead input").prop("checked", true);
+            }else {
+                $("thead input").prop("checked", false);
+            }*/
+            $("thead input").prop("checked",aInp == aChe);
+        });
+
+        $("tbody tr:odd").css("backgroundColor", "pink");
+        $("tbody tr:even").css("backgroundColor", "hotpink");
+    </script>
+</body>
+</html>

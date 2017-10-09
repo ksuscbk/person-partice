@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>继承2</title>
+</head>
+<body>
+    <script>
+        function Itouch (name, price, size) {
+            this.name = name;
+            this.price = price;
+            this.size = size;
+        }
+        Itouch.prototype.playGame = function () {
+            console.log("玩游戏");
+        }
+        Itouch.prototype.listen = function () {
+            console.log("听音乐");
+        }
+        var itouch = new Itouch();
+
+
+        // 创建Iphone 有Itouch的所有功能
+        // 借用构造函数继承
+        function Iphone (name, size, price) {
+            // 父级构造函数 执行的时候绑定this指向为当前构造函数
+//            Itouch.call(this, name, size, price);
+            Itouch.apply(this,[name, size, price]);
+
+        }
+        // 继承父亲原型上的方法      孩子会影响到父级  对象的引用关系
+        Iphone.prototype = Itouch.prototype;
+        Iphone.prototype.constructor = Iphone;
+        // 自己的方法
+        Iphone.prototype.call = function () {
+            console.log("正在打电话");
+        }
+        var iphone1 = new Iphone("iphoneSE", "4.5寸", "$1000");
+        iphone1.call();
+        console.log(iphone1.name);
+        console.log(iphone1.price);
+        console.log(iphone1.size);
+
+    </script>
+</body>
+</html>

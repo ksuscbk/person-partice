@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var str = "";
+
+        var j = 1;
+        for(;j<=9;j++) {
+            for(var i = 1;i<=j;i++) {
+                str += i + "*" + j + "=" + i*j + " ";
+            }
+            str += "\r\n";
+        }
+        console.log(str);
+    </script>
+</body>
+</html>

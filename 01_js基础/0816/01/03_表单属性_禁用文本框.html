@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            text-align: center;
+        }
+        input {
+            width: 500px;
+            height: 60px;
+            display: block;
+            border: 1px solid red;
+            margin: 10px auto;
+            font-size: 30px;
+            text-align: center;
+            color: cyan;
+        }
+    </style>
+</head>
+<body>
+<button>禁用</button>
+
+<input type="text" value=""/>
+
+<script>
+    window.onload = function () {
+        // 禁用文本框
+        var btn = document.getElementsByTagName("button")[0];
+        var inp = document.getElementsByTagName("input")[0];
+        // 绑定事件
+        btn.onclick = function () {
+            // 利用disabled 属性
+
+            if (btn.innerHTML === "禁用") {
+                inp.disabled = true;
+                inp.value = "我可以用了";
+                btn.innerText = "解用";
+            }else {
+                btn.innerText = "禁用";
+                inp.disabled = "disabled";
+                inp.value = "我被禁用了";
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

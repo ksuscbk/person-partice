@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //1.获取url中?后面的内容，并转化成对象的形式。
+        /*var str = "http://www.itheima.com/login?name=zs&age=18&a=1&b=2";
+        var index = str.lastIndexOf("?");
+        str = str.slice(index + 1);
+        var arr = str.split("&");
+        var newArr = {};
+        for (var i = 0; i < arr.length; i++) {
+            var asd = arr[i].split("=");
+            newArr[asd[0]] = asd[1];
+        }
+        console.log(newArr);*/
+        //2.统计各个字符出现的次数
+        var str = "hjjjsdsdhjaskhfkas";
+        var arr = {};
+        for (var i = 0; i < str.length; i++) {
+            if (arr[str.charAt(i)] === undefined) {
+                arr[str.charAt(i)] = 1;
+            }else {
+                arr[str.charAt(i)] = arr[str.charAt(i)] + 1;
+            }
+        }
+        console.log(arr);
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>过滤选择器</title>
+</head>
+<body>
+<div id="box">
+    <span>spanspan</span>
+    <span>spanspan</span>
+    <span>spanspan</span>
+    <span>spanspan</span>
+    <span>spanspan</span>
+</div>
+<ul>
+    <li>这是第1个li的内容</li>
+    <li>这是第1个li的内容</li>
+    <li>这是第1个li的内容</li>
+    <li>这是第1个li的内容</li>
+    <li>这是第1个li的内容</li>
+    <li>这是第1个li的内容</li>
+    <li>这是第1个li的内容</li>
+    <li>这是第1个li的内容</li>
+</ul>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+       // 过滤选择器
+       // 1  :
+        $("#box span:eq(1)").css("backgroundColor", "red");
+
+        //2 odd   even
+//        $("ul li:even").css("backgroundColor", "pink");
+//        $("ul li:odd").css("backgroundColor", "silver");
+
+
+    </script>
+</body>
+</html>

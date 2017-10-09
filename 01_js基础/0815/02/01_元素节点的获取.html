@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div class="div1">我们是被用来获取元素节点的</div>
+    <div id="div2">我们是被用来获取元素节点的</div>
+    <div class="div1">我们是被用来获取元素节点的</div>
+    <div class="div1">我们是被用来获取元素节点的</div>
+    <div >我们是被用来获取元素节点的</div>
+    <div >我们是被用来获取元素节点的</div>
+
+    <script>
+        window.onload = function () {
+            var aaa = document.getElementById("div2");
+            console.log(aaa);
+
+            var bbb = document.getElementsByTagName("div")[3];
+            console.log(bbb);
+            bbb.onclick = function () {
+                alert("实在不知道写啥");
+            }
+
+            var ccc = document.getElementsByClassName("div1")[1];
+            console.log(ccc);
+            ccc.onclick = function () {
+                alert("这次知道写啥了");
+            }
+
+
+        }
+    </script>
+</body>
+</html>

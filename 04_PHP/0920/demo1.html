@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XMLHttpRequest</title>
+	<style>
+		.result {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	
+	<h1 class="result"></h1>
+
+	<script>
+		var xhr = new XMLHttpRequest;
+
+		xhr.open('get', './01demo.php');
+		xhr.send();
+		xhr.addEventListener('readyStateChange',function() {
+			if (xhr.readyState == 4) {
+				document.querySelector("h1").innerHTML = xhr.responseText;
+			}
+		});
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            text-align: center;
+        }
+        input {
+            width: 500px;
+            height: 60px;
+            display: block;
+            border: 1px solid red;
+            margin: 10px auto;
+            font-size: 30px;
+
+            color: deeppink;
+            border: 1px solid red;
+            padding-left: 30px;
+        }
+        .hide {
+            display: none;
+        }
+        label {
+            font-size: 30px;
+            color: deeppink;
+            position: absolute;
+            top: 155px;
+            left: 445px;
+        }
+    </style>
+</head>
+<body>
+
+京东<input type="text" value="乒乓球"/>
+淘宝<input id="ppq" type="text"/><label for="ppq">乒乓球</label>
+placeholder<input type="text" placeholder="篮球"/>
+
+<script>
+    window.onload = function () {
+        // 京东
+        var inpArr = document.getElementsByTagName("input");
+        // 绑定事件
+        inpArr[0].onfocus = function () {
+            if (this.value === "乒乓球") {
+                this.value = "";
+            }
+        }
+        inpArr[0].onblur = function () {
+            if (this.value === "") {
+                this.value = "乒乓球";
+            }
+
+        }
+
+        inpArr[1].oninput = inpArr[1].onpropertychange = function () {
+            if (inpArr[1].value === "") {
+                this.className = "";
+            }else {
+                this.className = "hide";
+            }
+        }
+    }
+</script>
+</body>
+</html>

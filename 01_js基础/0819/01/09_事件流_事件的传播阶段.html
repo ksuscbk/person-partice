@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <style>
+        .box1 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid skyblue;
+            background-color: #000;
+        }
+        .box2 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid pink;
+            background-color: silver;
+            margin: 100px auto ;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box1">
+    <div class="box2"></div>
+</div>
+
+    <script>
+        window.onload = function () {
+            //addEventListener ()
+            // 第三个参数不写，默认支持冒泡
+            // 第三个参数为true是捕获
+            // eventPhase了解 目标阶段 1 捕获  2 目标 3  冒泡
+            // target
+
+            var div1 = document.getElementsByClassName("box1")[0];
+            var div2 = document.getElementsByClassName("box2")[0];
+//            div1.addEventListener("click", function () {
+//                alert("我是盒子1");
+//            },true);
+//            div2.addEventListener("click", function () {
+//                alert("我是盒子2");
+//            },false);
+//            document.addEventListener("click", function () {
+//                alert("我是文档");
+//            },true);
+            div1.addEventListener("click", function (event) {
+                var event = event || window.event;
+                console.log(event.eventPhase);
+                alert("我是盒子1");
+            },true);
+            div2.addEventListener("click", function (event) {
+                var event = event || window.event;
+                console.log(event.eventPhase);
+                alert("我是盒子2");
+            },false);
+            document.addEventListener("click", function (event) {
+                var event = event || window.event;
+                console.log(event.eventPhase);
+                alert("我是文档");
+            },true);
+        }
+
+
+    </script>
+</body>
+</html>

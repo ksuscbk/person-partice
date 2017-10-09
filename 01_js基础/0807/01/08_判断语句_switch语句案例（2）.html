@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>switch语句案例</title>
+</head>
+<body>
+    <script>
+        //1.素质教育（把分数变成ABCDE）
+//        var str1 = prompt("请输入学生成绩");
+//        var level = Number(str1);
+//        switch(true){
+//            case level>=90 && level<=100:   //注意是冒号
+//                alert("学生成绩为A");
+//                break;
+//            case level>=80:
+//                alert("学生成绩为B");
+//                break;
+//            case level>=70:
+//                alert("学生成绩为C");
+//                break;
+//            case level>=60:
+//                alert("学生成绩为D");
+//                break;
+//            default:
+//                alert("学生成绩为E");
+//        }
+        //拓展  思路  除以10取整  其实可以用Math.ceil（）;
+        var str1 = prompt("请输入学生成绩");
+        var level = Number(str1);
+        str1 = parseInt(level%10);
+        console.log(str1);
+        switch(str1){
+            case 9:
+                alert("学生成绩为A");
+                break;
+            case 8:
+                alert("学生成绩为B");
+                break;
+            case 7:
+                alert("学生成绩为C");
+                break;
+            case 6:
+                alert("学生成绩为D");
+                break;
+            default:
+                alert("学生成绩为E");
+                break;
+        }
+        //2.根据月份输出四季；(123春；....)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>第二种绑定方法与使用</title>
+</head>
+<body>
+    <script>
+        //创建一个新的空对象
+        var s = new Object();
+        //用新方法绑定属性
+        var abc = "sex";
+        s[abc] = "男";
+        //使用这个属性
+        console.log(s[abc]);
+        console.log(s.sex);
+    </script>
+</body>
+</html>

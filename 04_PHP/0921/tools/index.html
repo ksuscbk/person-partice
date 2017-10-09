@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装工具函数</title>
+</head>
+<body>
+	<h1>使用XMLHttpRequest可以向服务器发起异步请求，为了能够提升开发效率，可以对XMLHTTPRequest的使用进行封装</h1>
+	<button class="btn1">按钮</button>
+	<button class="but2">按钮</button>
+	<h1 class="h1"></h1>
+	<h2 class="h2"></h2>
+	<script src="./ajax.js"></script>
+	<script>
+		var btn = document.getElementsByTagName("button");
+		btn[0].addEventListener("click", function () {
+			$.ajax({
+				url:'test1.php',
+			 	type:'get',
+			 	data: {name:'焦强', age:22},
+			 	success: function (aaa) {
+					document.getElementsByClassName('h1')[0].innerHTML = aaa.name + aaa.age;
+			 	}
+			});
+		});
+		btn[1].addEventListener("click", function () {
+			$.ajax({
+				url:'test2.php',
+				type:'post',
+				data: {name:"小ming", age:20},
+				success: function (aaa) {
+					document.getElementsByClassName("h2")[0].innerHTML = aaa.name + aaa.age;
+				}
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选中移动</title>
+    <style>
+        button {
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+        }
+        select {
+            width: 200px;
+            height: 400px;
+            font-size: 24px;
+            line-height: 30px;
+            list-style: none;
+            border: 1px solid #ccc;
+            background-color: skyblue;
+            color: #ff1ca2;
+        }
+    </style>
+</head>
+<body>
+<select multiple size = 8 id="sel1">
+    <option>滕海瑞内蒙</option>
+    <option>王安逸徐州</option>
+    <option>段仁斌吕梁</option>
+    <option>焦强大运城</option>
+</select>
+<button>>>></button>
+<button><<<</button>
+<button>></button>
+<button><</button>
+<select multiple size = 10 id="sel2">
+
+</select>
+<script>
+    window.onload = function () {
+        var btn = document.getElementsByTagName("button");
+        var sel = document.getElementsByTagName("select");
+        var optArrLeft = sel[0].children;
+        var optArrRight = sel[1].children;
+        btn[0].onclick = function () {
+            for (var i = 0; i < optArrLeft.length; ) {
+                sel[1].appendChild(optArrLeft[i]);
+            }
+        }
+        btn[1].onclick = function () {
+            for (var i = 0; i < optArrRight.length; ) {
+                sel[0].appendChild(optArrRight[i]);
+            }
+        }
+        btn[2].onclick = function () {
+            for (var i = 0; i < optArrLeft.length; i++) {
+                if (optArrLeft[i].selected === true) {
+                    optArrLeft[i].selected = false;
+                    sel[1].appendChild(optArrLeft[i]);
+                    i--;
+                }
+            }
+        }
+        btn[3].onclick = function () {
+            for (var i = 0; i < optArrRight.length; i++) {
+                if (optArrRight[i].selected = true) {
+                    optArrRight[i].selected = false;
+                    sel[0].appendChild(optArrRight[i]);
+                    i--;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

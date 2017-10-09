@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 5px solid #000;
+            background-color: pink;
+            padding: 20px;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        //接受参数 参数是数字+true（可选）  改变的永远是宽高        参数为true 返回值是内容高度+padding+border+margin
+//        console.log($("#box").height());         // 内容高度
+//        console.log($("#box").innerHeight(true));    // 内容高度+padding          clientHeight
+//        console.log($("#box").outerHeight());    // 内容高度+padding+border   offsetHeight
+
+
+//        $("#box").height(200);
+//        $("#box").innerHeight(400);
+        $("#box").outerHeight(400);
+    </script>
+</body>
+</html>

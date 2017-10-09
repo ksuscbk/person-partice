@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>北京时间</title>
+</head>
+<body>
+    <script>
+        //格式化现在的时间输出到屏幕上   不足10补0
+        var now = new Date();
+        function formatTime(time) {
+            var year = time.getFullYear();
+            var month = time.getMonth();
+            var day = time.getDate();
+            var hour = time.getHours();
+            var minute = time.getMinutes();
+            var second = time.getSeconds();
+            month = month > 10 ? month : "0" + month;
+            day = day > 10 ? day : "0" + day;
+            hour = hour > 10 ? hour : "0" + hour;
+            minute = minute > 10 ? minute : "0" + minute;
+            second = second > 10 ? second : "0" + second;
+            document.write("现在是北京时间：" + year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second);
+        }
+        formatTime(now);
+    </script>
+</body>
+</html>

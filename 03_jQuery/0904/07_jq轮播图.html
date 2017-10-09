@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img {
+            height: 400px;
+            width: 700px;
+        }
+        ul, ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul {
+            position: relative;
+        }
+        #box {
+            height: 400px;
+            width: 700px;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        ul li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        #nav {
+            position: absolute;
+            bottom: 20px;
+            left: 350px;
+        }
+        #nav li{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: orange;
+            margin-right: 10px;
+            float: left;
+            left: 20px;
+            text-align: center;
+        }
+        ol#nav li.active {
+            background-color: red;
+        }
+        .left,
+        .right {
+            font-family: arial;
+            position: absolute;
+            top: 150px;
+            display: block;
+            width: 30px;
+            height: 50px;
+            background-color: rgba(0,0,0,0.5);
+            font-size: 30px;
+            text-align: center;
+            line-height: 50px;
+            color: orange;
+            display: none;
+            cursor: pointer;
+        }
+        .right {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li style="display: block"><a href="#"><img src="images/1.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/2.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/3.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/4.jpg" alt=""/></a></li>
+        </ul>
+        <ol id="nav">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+        <div class="left"><</div>
+        <div class="right">></div>
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // 思路 让当前需要出现的li淡入，让别的li淡出
+        //  获取所有的li  添加鼠标移上事件
+        $("ol li").mouseenter(function () {
+            $("ul li").eq($(this).index()).fadeIn().siblings().fadeOut();
+            $(this).addClass("active").siblings().removeClass("active");
+            num = $(this).index();
+        });
+        // 让ul自动走起来
+        var timer = null;
+        // 设置变量从0到3循环
+        var num = 0;
+        timer = setInterval(autoplay, 1500);
+        // 移动到整个box上清除定时器
+        $("#box").mouseenter(function () {
+            clearInterval(timer);
+            $(".left,.right").show();
+        });
+        // 移开再开启定时器
+        $("#box").mouseleave(function () {
+            timer = setInterval(autoplay, 1500)
+            $(".left,.right").hide();
+        });
+        // 左右按钮事件
+        $(".left").click(function () {
+            num--;
+            if (num == -1) {
+                num = $("#nav>li").length - 1;
+            }
+            $("#nav li").eq(num).addClass("active").siblings().removeClass("active");
+            $("ul li").eq(num).fadeIn().siblings().fadeOut();
+        });
+        $(".right").click(function () {
+            autoplay();
+        });
+        function autoplay(){
+            num++;
+            // ol 的li走
+            if (num === 4) {
+                num = 0;
+            }
+            $("#nav li").eq(num).addClass("active").siblings().removeClass("active");
+            //   ul跟着走
+            $("ul li").eq(num).fadeIn().siblings().fadeOut();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            background-color: #ccc;
+        }
+        div {
+            margin: 40px auto;
+            width: 525px;
+            text-align: center;
+        }
+        button {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+
+        }
+        img {
+            float: left;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button>开灯</button>
+        <button>关灯</button>
+        <img src="images/1.JPG" alt=""/>
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $("button:eq(0)").click(function () {
+            $("body").css("backgroundColor", "#eee")
+            $("body").css("transition", "all 1s");
+        });
+        $("button:eq(1)").click(function () {
+            $("body").css("backgroundColor", "#555");
+            $("body").css("transition", "all 1s");
+        });
+    </script>
+</body>
+</html>

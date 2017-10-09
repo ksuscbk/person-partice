@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var doAdd = new Function("num", "alert(num + 10)");
+        var doAdd2 = doAdd;
+        doAdd(10);
+        doAdd2(10);
+    </script>
+</body>
+</html>

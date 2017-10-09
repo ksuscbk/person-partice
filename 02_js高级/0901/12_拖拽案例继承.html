@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+        #box2 {
+            background-color: gold;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+        (function (window) {
+            function Drag (id) {
+                this.obj = document.getElementById(id);
+                this.x = 0;
+                this.y = 0;
+                this.init();
+            }
+            Drag.prototype.init = function () {
+                var that = this;
+                this.obj.onmousedown = function (e) {
+                    e = e || event;
+                    // 获取鼠标在盒子上距离
+                    that.x = e.clientX - this.offsetLeft;
+                    that.y = e.clientY - this.offsetTop;
+                    // 在document上移动
+                    document.onmousemove = function (e) {
+                        that.move(e);
+                    };
+                    document.onmouseup = that.up;
+                }
+            }
+            Drag.prototype.move = function (e) {
+                e = e || event;
+                var boxx = e.clientX - this.x;
+                var boxy = e.clientY - this.y;
+                this.obj.style.left = boxx + "px";
+                this.obj.style.top = boxy + "px";
+
+            }
+            Drag.prototype.up = function () {
+                document.onmouseup = document.onmousemove = null;
+            }
+            window.Drag = Drag;
+        })(window);
+        (function (window, Drag) {
+            function Drag2(id) {
+                Drag.call(this, id);
+            }
+            for (var attr in Drag.prototype) {
+                Drag2.prototype[attr] = Drag.prototype[attr];
+            }
+            Drag2.prototype.move = function (e) {
+                // 只能在可视区域拖拽
+                e = e || event;
+                var boxx = e.clientX - this.x;
+                var boxy = e.clientY - this.y;
+                var maxx = document.documentElement.clientWidth - this.obj.offsetWidth;
+                var maxy = document.documentElement.clientHeight - this.obj.offsetHeight;
+                if (boxx < 0) {
+                    boxx = 0;
+                }
+                if (boxx > maxx) {
+                    boxx = maxx;
+                }
+                if (boxy < 0) {
+                    boxy = 0;
+                }
+                if (boxy > maxy) {
+                    boxy = maxy;
+                }
+                this.obj.style.left = boxx + "px";
+                this.obj.style.top = boxy + "px";
+            }
+            window.Drag2 = Drag2;
+        })(window, Drag);
+
+        var drag1 = new Drag("box");
+        var drag2 = new Drag2("box2");
+    </script>
+
+</body>
+</html>

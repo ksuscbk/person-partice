@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            font-size: 50px;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            margin: 20px auto;
+            width: 400px;
+        }
+        li {
+            color: red;
+            float: left;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+</ul>
+    <!--★★★★★-->
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // 在方法内部会自动把获取到的元素自动循环遍历
+        var star1 = "☆";
+        var star2 = "★";
+        $("ul li").on({
+            "mouseenter":function() {
+                $("ul li").text(star1);
+                $(this).text(star2).prevAll().text(star2);
+            },
+            "click":function () {
+                $(this).addClass("abc").siblings().removeClass("abc");
+            },
+            "mouseleave":function () {
+                $("ul li").text(star1);
+                $("ul li.abc").text(star2).prevAll().text(star2);
+            }
+        });
+    </script>
+</body>
+</html>

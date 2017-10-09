@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        button {
+            width: 150px;
+            height: 40px;
+            font: 400 20px/25px "simsun";
+            background-color: cornsilk;
+            text-align: center;
+        }
+        .box1 {
+            height: 500px;
+            background-color: silver;
+        }
+        .box2 {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+        }
+        .box3 {
+            position: absolute;
+            top: 300px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <button>去北京郊区</button>
+    <button>去上海郊区</button>
+
+    <div class="box1">
+        <div class="box2">
+            千金散尽还复来
+        </div>
+        <div class="box3">
+            青莲也映明眸盈
+        </div>
+    </div>
+    <script>
+        var butArr = document.getElementsByTagName("button");
+        var box2 = document.getElementsByClassName("box2")[0];
+        var box3 = document.getElementsByClassName("box3")[0];
+
+        butArr[0].onclick = function () {
+            fn(box2, 200);
+            fn(box3, 200);
+        }
+        butArr[1].onclick = function () {
+            fn(box2, 800);
+            fn(box3, 800);
+        }
+
+        /*function fn (ele, target) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var step = target > ele.offsetLeft ? 5 : -5;
+                ele.style.left = ele.offsetLeft + step + "px";
+                if (Math.abs(target - ele.offsetLeft) < 5) {
+                    ele.style.left = target + "px";
+                    clearInterval(ele.timer);
+                }
+            }, 30);
+
+        }*/
+        function fn (element, target) {
+            clearInterval(element.timer);
+            element.timer = setInterval(function () {
+                var step = target > element.offsetLeft ? 10 : -10;
+                element.style.left = element.offsetLeft + step + "px";
+                if (Math.abs(target - element.offsetLeft) <= 10) {
+                    element.style.left = target + "px";
+                    clearInterval(element.timer);
+                }
+            } ,30)
+        }
+    </script>
+</body>
+</html>

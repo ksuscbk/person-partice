@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //递归  函数自己调用自己            没有跳出条件就是死循环
+//        var num = 1;
+//        function fn() {
+//            if (num == 3){
+//                return;
+//            }
+//            console.log(num);
+//            num++;
+//            fn();
+//        }
+
+
+
+        //闭包  函数作为返回值
+//        function fn () {
+//            return function () {
+//
+//            }
+//        }
+        // 回调函数   函数作为参数进行传递和调用
+        function fn (aaa) {
+            var num1 = 1;
+            var num2 = 2;
+            aaa (num1, num2);
+        }
+    </script>
+</body>
+</html>

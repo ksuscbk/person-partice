@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //定时器   两种 循环定时器setInterval(函数, 毫秒值);    炸弹定时器  定时器主要用于刷新一部分页面。轮播图。动画
+                  //关闭定时器，
+        var aa = setInterval(fn1,3000);
+        var bb = setInterval(fn2,3000);
+        console.log(aa);  //返回1
+        console.log(bb);  //返回2
+        function fn1() {
+
+        }
+        function fn2() {
+
+        }
+
+        //关闭定时器    函数下一次才停止
+        var timer = null;     // 0    ""     -1  赋值的时候就把它覆盖了
+        var num = 1;
+        timer = setInterval(function () {
+            console.log()
+        })
+        //3.先执行页面上程序，再执行定时器
+
+    </script>
+</body>
+</html>

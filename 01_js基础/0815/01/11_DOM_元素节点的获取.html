@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li name = "li">1</li>
+    <li class="box">2</li>
+    <li id = "box">3</li>
+    <li class ="box">4</li>
+    <li name = "li">5</li>
+</ul>
+    <script>
+        // 元素节点的获取  常用6种左右
+//        DOM对象   元素节点   标签想同
+//        console.dir(document);   // 以对象的形式打印
+
+        // 总结
+        //1.用得最多，ById()   ByTagName();
+        //2.querySelector();/querySelectorAll(); 不兼容IE678
+        //3.byClassName(); ByName();        不兼容IE678
+        //ById();  querySelector();最简单，获取了直接用
+        //其余的方法返回的都是伪数组，要用的话，哪怕只有一个也需要[0];
+
+
+        
+        //1. document.getElementById();
+//        console.log(document.getElementById("box"));  返回一个对象
+        //2. document.getElementsByTagName();      可以缩小范围查找
+//        console.log(document.getElementsByTagName("li"));   //获取到的都是伪数组  无论有没有
+//        console.log(document.getElementsByTagName("ul"));
+
+
+        //了解
+        //3.document.getElementsByClassName();IE678不支持  类名
+//        console.log(document.getElementsByClassName("box"));
+
+        //4.只查询第一个  模仿css选择器         IE678不支持
+//        console.log(document.querySelector(".box"));
+
+        //5.全选   多了个ALL     IE678不支持
+//        console.log(document.querySelectorAll(".box"));
+
+        //6.document.getElementsByName   IE6789 支持  但获取不到
+            //不能缩小范围
+        console.log(document.getElementsByName("li"));
+
+
+    </script>
+</body>
+</html>

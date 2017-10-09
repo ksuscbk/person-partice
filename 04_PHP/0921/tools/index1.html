@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模仿jQuery封装工具函数</title>
+</head>
+<body>
+	<button>GET方式的请求</button>
+	<button>POST方式的请求</button>
+	<h1></h1>
+	<h2></h2>
+	<script src="./ajax2.js"></script>
+	<script>
+		var btn = document.getElementsByTagName("button");
+		var h1 = document.getElementsByTagName("h1")[0];
+		var h2 = document.getElementsByTagName("h2")[0];
+
+		btn[0].addEventListener("click", function () {
+			$.ajax({
+				url: './test1.php',
+				type: 'get',
+				data: {name:'小明', age:80},
+				success: function (info) {
+					h1.innerHTML = info.name + info.age;
+				}
+			});
+		});
+		btn[1].addEventListener("click", function () {
+			$.ajax({
+				url:"./test2.php",
+				type:"post",
+				data:{name:'小帅',age:22},
+				success: function (info) {
+					h2.innerHTML = info.name + info.age;
+				}
+			});
+		});
+	</script>
+</body>
+</html>

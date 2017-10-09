@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>1-100之间不能被7整除的数的和</title>
+</head>
+<body>
+    <script>
+        //1-100之间不能被7整除的数的和
+        //思路：和前面一样，写条件，挑出数字，相加
+        var i = 1;
+        var sum = 0;
+        for(;i<=100;i++) {
+            if(i%7 != 0) {
+                sum+=i;
+            }
+            console.log(i);   //看看都是你想要的数吗  i是从1到100的，这不是我想看到的数
+        }
+        alert(sum);
+    </script>
+</body>
+</html>

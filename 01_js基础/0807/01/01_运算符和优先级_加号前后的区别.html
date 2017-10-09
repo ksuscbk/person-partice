@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>加号前后的区别</title>
+</head>
+<body>
+    <script>
+        var aa = 1;
+        var bb = 2;
+        console.log(aa++); //1
+        var cc = ++aa + bb++;
+        console.log(cc);    //5
+
+
+        //昨天助教教的方法
+        var a = 1;
+        var b = ++a + ++a;
+        console.log(b);    //5
+        var a = 1;
+        var b = a++ + ++a;
+        console.log(b);    //4
+
+        var a = 1;
+        var b = a++ + a++;
+        console.log(b);    //3
+        console.log(a);    //3
+        var a = 1;
+        var b = ++a + a++;
+        console.log(b);    //4
+
+    </script>
+</body>
+</html>

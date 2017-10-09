@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //日期对象date   使用的时候需要new
+        var date1 = new Date();
+
+        var date2 = new Date("2016/06/21 16:02:29");
+        console.log(date1);
+        console.log(date2);
+
+        // 如果想要获取具体的时间，那么需要使用固定的方法获取
+        var a = new Date();
+        console.log(a.getFullYear() + "年");
+        console.log(a.getMonth() + "月");
+        console.log("星期" + a.getDay());
+        console.log(a.getDate() + "号");
+        console.log(a.getHours() + "小时");
+        console.log(a.getMinutes() + "分钟");
+        console.log(a.getSeconds() + "秒");
+        console.log(a.getMilliseconds() + "毫秒");
+        console.log(a.getTime());
+
+
+
+        //
+        var date1 = Date.now();
+        var date2 = +new Date();
+        var date3 = new Date().getTime();
+        var date4 = new Date().valueOf();
+        console.log(date1);
+        console.log(date2);
+        console.log(date3);
+        console.log(date4);
+    </script>
+</body>
+</html>

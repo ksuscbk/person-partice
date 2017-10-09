@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>继承1</title>
+</head>
+<body>
+    <script>
+        function Itouch (color, price, size) {
+            this.color = color;
+            this.price = price;
+            this.size = size;
+        }
+        Itouch.prototype.playGame = function () {
+            console.log("玩游戏");
+        }
+        Itouch.prototype.listen = function () {
+            console.log("听音乐");
+        }
+        var itouch = new Itouch();
+
+
+        // 创建Iphone 有Itouch的所有功能
+        // 原型继承   优点  继承简单方便                   缺点  不能传参，需要改指向  constructor
+        Iphone.prototype = new Itouch();
+
+
+
+
+        function Iphone(name, size, price) {
+            this.name = name;
+            this.size = size;
+            this.price = price;
+        }
+        Iphone.prototype.playGame = function () {
+            console.log("玩游戏");
+        }
+        Iphone.prototype.call = function () {
+            console.log("打电话");
+        }
+        Iphone.prototype.listen = function () {
+            console.log("听音乐");
+        }
+
+        var iphone1 = new Iphone("iphoneSE", "4.5寸", "$1000");
+        console.log(iphone1.name);
+        console.log(iphone1.price);
+        console.log(iphone1.size);
+
+    </script>
+</body>
+</html>

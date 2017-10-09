@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>json</title>
+</head>
+<body>
+    <script>
+        //js的对象表示法    javascript  object  notation       js中对对象的一种表示形式
+//        var json = {"name": "张三", "age": 18};  //一般json的属性都是字符串  属性值可以带引号 也可以不带
+//        var obj = {0: "张三", 1:" ", 2:18};
+//        console.log(json);
+//        console.log(obj);
+//        for (var k in json) {
+//            console.log(k);
+//            console.log(json);
+//
+//        }
+        //js 中可以自定义对象，但不能自定义类型
+
+
+        //instanceof   查看是用哪个构造函数造出来的
+        var stu = new Object();
+        stu.name = "焦强";
+        stu.age = 18;
+        console.log(stu);
+        console.log(typeof stu);
+        console.log("---------------------------------------");
+
+
+
+
+        function Teacher (name,age) {
+            this.name = name;
+            this.age = age;
+        }
+        var t1 = new Teacher("吕超", 30);
+        console.log(t1.name);
+        console.log(t1 instanceof Teacher);
+        console.log(t1 instanceof Object);
+        console.log(t1 instanceof Array);
+
+    </script>
+</body>
+</html>

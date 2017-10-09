@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模板引擎</title>
+	<style>
+		td span {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<button>按钮</button>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>性别</td>
+				<td>专辑</td>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	<script type="text/template" id="tpl1">
+		{{each lists}}
+			<tr>
+				<td>{{$index+1}}</td>
+				<td>{{$value.name}}</td>
+				<td>{{$value.age}}</td>
+				<td>{{$value.gender}}</td>
+				<td>{{$value.ablum}}</td>
+			</tr>
+		{{/each}}
+	</script>
+	<script type="text/template" id="tpl2">
+		{{each lists as a b}}
+			<tr>
+				<td>{{b+1}}</td>
+				<td>{{a.name}}</td>
+				<td>{{a.age}}</td>
+				<td>{{a.gender}}</td>
+				<td>{{a.ablum}}</td>
+			</tr>
+		{{/each}}
+	</script>
+	<script src="./template-web.js"></script>
+	<script>
+		// 点击按钮发起请求，将服务器给前端的数据展示在表格里
+		var btn = document.getElementsByTagName("button")[0];
+		var tbody = document.getElementsByTagName("tbody")[0];
+		btn.addEventListener("click", function () {
+			var xhr = new XMLHttpRequest();
+			xhr.open("get","./case1.php");
+			xhr.send();
+			xhr.addEventListener("readystatechange", function () {
+				if (xhr.status == 200 && xhr.readyState == 4) {
+					var data = JSON.parse(xhr.responseText);
+					// 传递数据的思想再研究一下
+					tbody.innerHTML = template('tpl2', {lists:data});
+				}
+			});
+		});
+	</script>
+</body>
+</html>

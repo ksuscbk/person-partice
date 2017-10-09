@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button>
+        创建节点
+    </button>
+    <ul>
+        <li>
+            原生节点
+        </li>
+        <!--<script>-->
+            <!--document.write("创建节点"); 容易覆盖页面，几乎不用-->
+        <!--</script>-->
+    </ul>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName("button")[0];
+            var ul = document.getElementsByTagName("ul")[0];
+            btn.onclick = function () {
+                // 1.在文档中输入 document.write();
+//                document.write("<li>我是用document.write()创建的li标签</li>");
+                // 第二种  innerHTML
+                // 优点  书写方便，多标签嵌套尤其好用
+                // 缺点  容易把原有元素覆盖掉
+//                         老元素上的事件被覆盖掉
+                ul.children[0].innerHTML = "<li>我是innerHTML创建的</li>";
+                //第三种  document.createElement("标签名");
+//                    优点：不会影响原有元素上的事件
+                        //多标签嵌套尤其不好用
+//                var newLi = document.createElement("li");
+//                newLi.innerHTML = "我是document.createElement创建的li";
+//                console.log(newLi);
+//                ul.appendChild(newLi);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="box"></div>
+    <ul>
+        <li>lalalla</li>
+        <li>lalalla</li>
+        <li>lalalla</li>
+        <li>lalalla</li>
+    </ul>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // DOM对象，用原生js 获取的页面中的元素对象就是DOM对象
+        /*var a = document.getElementById("box");
+        //  可以使用dom 的原生方法
+        a.innerHTML = "改变一下内容";
+        console.log(a);*/
+//        var aLi = document.getElementsByTagName("li");
+//        for (var i = 0; i < aLi.length; i++) {
+//            aLi[i].style.backgroundColor = "blue";
+//        }
+//        aLi[2].style.backgroundColor = "red";
+        // jq对象   通过$符号获取的页面上的元素对象
+        /*var b = $("#box");
+        // 只有jq对象才能使用jq对象的方法
+        b.html("这是jq对象的方法")
+        console.log(b);*/
+        console.log($("li"));
+        $("li").css("backgroundColor","pink");
+        $("li:eq(1)").css("backgroundColor", "hotpink");
+
+    </script>
+</body>
+</html>

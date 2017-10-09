@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选中移动</title>
+    <style>
+        button {
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+        }
+        select {
+            width: 200px;
+            height: 400px;
+            font-size: 24px;
+            line-height: 30px;
+            list-style: none;
+            border: 1px solid #ccc;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <select multiple size = 8 id="sel1">
+        <option>上下左右BABA</option>
+        <option>12345678</option>
+        <option>abcdefgh</option>
+        <option>LKJHGFDF</option>
+    </select>
+    <button>>>></button>
+    <button><<<</button>
+    <button>></button>
+    <button><</button>
+    <select multiple size = 10 id="sel2">
+
+    </select>
+    <script>
+        window.onload = function () {
+            var butArr = document.getElementsByTagName("button");
+            var sel1 = document.getElementById("sel1");
+            var sel2 = document.getElementById("sel2");
+            butArr[0].onclick = function () {
+                var optArr = sel1.children;
+                for (var i = 0; i < optArr.length; i++) {
+                    sel2.appendChild(optArr[i]);
+                    i--;
+                }
+            }
+            butArr[1].onclick = function () {
+                var optArr = sel2.children;
+                for (var i = 0; i < optArr.length; ) { //思考条件设置问题
+                    sel1.appendChild(optArr[i]);
+                }
+            }
+            butArr[2].onclick = function () {
+                var optArr = sel1.children;
+                for (var i = 0; i < optArr.length; i++) {
+                    if (optArr[i].selected === true) {
+                        optArr[i].selected = false;
+                        sel2.appendChild(optArr[i]);
+                        i--;              //保证每次运算后还是从被选中的那个开始
+                    }
+                }
+            }
+            butArr[3].onclick = function () {
+                var optArr = sel2.children;
+                for (var i = 0; i < optArr.length; i++) {
+                    if (optArr[i].selected === true) {
+                        sel1.appendChild(optArr[i]);
+                        i--;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

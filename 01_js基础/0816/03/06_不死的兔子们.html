@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>妖孽的兔子</title>
+</head>
+<body>
+    <script>
+        var n = Number(prompt("请输入您想查看小兔子成双成对数量的月份："));
+        function num(n) {
+            var n1 = 1;
+            var n2 = 1;
+            if (n === 1 || n === 2) {
+                alert("小兔子只有1对");
+            }
+            if (n > 2) {
+                for (var i = 3; i <= n; i++) {
+                    var sum = n1 + n2;
+                    n1 = n2;
+                    n2 = sum;
+                }
+                alert(n + "个月后，不死的兔子对数为" + sum + "对");
+            }
+        }
+        num(n);
+    </script>
+</body>
+</html>

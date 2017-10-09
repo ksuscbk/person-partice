@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>client</title>
+</head>
+<body>
+    <script>
+
+        window.onresize = function () {
+            document.write(clientWidth() + "-----" + clientHeight());
+        }
+        function clientWidth () {
+            return window.innerWidth || document.documentElement.clientWidth;
+        }
+        function clientHeight () {
+            return window.innerHeight || document.documentElement.clientHeight;
+        }
+
+
+    </script>
+</body>
+</html>

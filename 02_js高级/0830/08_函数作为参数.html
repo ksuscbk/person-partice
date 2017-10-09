@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+//        function aaa (bbb) {
+//            setTimeout(function () {
+//                console.log(111);
+//            }, 1000)
+//            bbb();
+//        }
+//        aaa (function () {
+//            console.log(222);
+//        });
+
+    function fn () {
+        var count = 0;
+        return {
+            getCount: function () {
+                console.log(count);
+            },
+            setCount: function () {
+                count++;
+            }
+        }
+    }
+
+    var fns = fn();
+
+    fns.getCount();   //0
+    fns.setCount();
+    fns.getCount();   //1
+    </script>
+</body>
+</html>

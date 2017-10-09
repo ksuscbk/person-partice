@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //1.加横杠
+//        var arr = ["刘备", "关羽", "张飞"];
+//        console.log(arr);
+//        var arr1 = arr.join("|");
+//        console.log(arr1);
+//        //2.反转
+//        var arr2 = arr.reverse();
+//        console.log(arr2);
+//
+//        //3.超过两千的走你
+//        var arr = [2000, 1700, 7654, 5436];
+//        var newArr = arr.filter(function (element, index, array) {
+//            if(element >= 2000) {
+//                return true;
+//            }
+//        });
+//        console.log(newArr);
+
+        //4.找到数组中每一个a出现的位置
+//        var arr = ["c", "w", "a", "s", "a", "u"];
+//        arr.forEach(function (element, index, array) {
+//            if (element = "a") {
+//                console.log(index);
+//            }
+//        });
+        //5. 去掉数组中的重复元素
+        var arr = ["c", "w", "a", "s", "a", "u"];
+        var newArr = [];
+        function getOnly (arr) {
+            for (var i = 0; i < arr.length; i++) {
+                var bool = true;
+                for (var j = 0; j < newArr.length; j++) {
+                    if (newArr[j] === arr[i]) {
+                        bool = false;
+                    }
+                }
+                if (bool) {
+                    newArr[newArr.length] = arr[i];
+                }
+            }
+            return newArr;
+        }
+        console.log(getOnly(arr));
+    </script>
+</body>
+</html>

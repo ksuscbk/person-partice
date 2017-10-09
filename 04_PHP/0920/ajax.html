@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+</head>
+<body>
+	<h1></h1>
+	<script>
+	// XMLHttpRequest 是一个js的内置对象，用于向服务器发起请求，可以异步也可以同步，异步方式是ajax的一部分
+	// open方法的第三个参数可以设定发起请求方式，bool类型，默认为true 异步方式
+		var xhr = new XMLHttpRequest();
+		xhr.open('get','./01demo.php');
+		// 请求头根据情况不一定设置
+		xhr.send();
+		xhr.addEventListener("readystatechange",function () {
+			if (xhr.readyState == 4 & xhr.status == 200) {
+				document.write(11111);
+			}
+		})
+
+		// var xhr = new XMLHttpRequest();
+		// xhr.open('get','./01demo.php');
+		// xhr.send();
+		// xhr.addEventListener("readystatechange",function () {
+		// 	if (xhr.readyState == 4&xhr.status == 200) {
+		// 		document.getElementsByTagName("h1")[0].innerText = xhr.responseText;
+		// 	}
+		// });
+	</script>
+</body>
+</html>

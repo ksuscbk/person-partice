@@ -1,0 +1,86 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TAB切换</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .box {
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            overflow: hidden;
+            color: #eee;
+        }
+        ul {
+            height: 40px;
+        }
+        ul li {
+            float: left;
+            width: 80px;
+            height: 40px;
+            font: 500 20px/40px "simsun";
+            text-align: center;
+            cursor: pointer;
+            background-color: deepskyblue;
+        }
+        span {
+            display: none;
+            width: 400px;
+            height: 260px;
+            background-color: deeppink;
+            text-align: center;
+            font: 600 70px/260px "simsun";
+        }
+        .current {
+            background-color: deeppink;
+        }
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <ul>
+        <li class="current">鞋子</li>
+        <li>袜子</li>
+        <li>裤子</li>
+        <li>裙子</li>
+        <li>帽子</li>
+    </ul>
+
+    <span class="show">鞋子区域</span>
+    <span>袜子区域</span>
+    <span>裤子区域</span>
+    <span>裙子区域</span>
+    <span>帽子区域</span>
+
+</div>
+    <script>
+        window.onload = function () {
+            var liArr = document.getElementsByTagName("li");
+            var spanArr = document.getElementsByTagName("span");
+            for (var i = 0; i < liArr.length; i++) {
+                liArr[i].index = i;
+                liArr[i].onmouseover = function () {
+                    for (var j = 0; j < liArr.length; j++) {
+                        liArr[j].style.backgroundColor = "deepskyblue";
+                        spanArr[j].className = "";
+                    }
+                    this.style.backgroundColor = "deeppink";
+                    var index = this.index;
+                    spanArr[index].className = "show";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

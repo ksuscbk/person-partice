@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>client</title>
+</head>
+<body>
+    <script>
+        //需求：浏览器可视区域大于960背景色为红；小于640位黄；两者之间为蓝;
+        //思路：绑定浏览器大小改变事件；判断可视区域的宽度，然后上色;
+        window.onload = function () {
+            change();
+            window.onresize = change;
+        }
+        function change () {
+            if (clientWidth() >= 960) {
+                document.body.bgColor = 'red';
+            }else if (clientWidth() >= 640) {
+                document.body.bgColor = 'blue';
+            }else {
+                document.body.bgColor = "yellow";
+            }
+        }
+        function clientWidth () {
+            return window.innerWidth || document.documentElement.clientWidth;
+        }
+
+    </script>
+</body>
+</html>

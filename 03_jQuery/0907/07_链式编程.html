@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // 链式编程原理    return  this;
+
+//        在jqurey中,获取当前对象属性值之后不能继续进行链式编程
+        var obj = {
+            name : "**",
+            setName : function (name) {
+                this.name = name;
+                return this;
+            },
+            getName : function () {
+                console.log(this.name);
+            }
+        };
+        obj.setName("焦强").getName();
+    </script>
+</body>
+</html>

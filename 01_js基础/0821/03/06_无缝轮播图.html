@@ -1,0 +1,228 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .out {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .inner {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .inner li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .inner ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .out ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .out ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .out ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--外部盒子-->
+<div class="out" id='out'>
+    <!--内部盒子-->
+    <div class="inner" id="inner">
+        <!--图片们-->
+        <ul id="ul">
+            <li><img src="../images/1.jpg" width="500" height="200"/></li>
+            <li><img src="../images/2.jpg" width="500" height="200"/></li>
+            <li><img src="../images/3.jpg" width="500" height="200"/></li>
+            <li><img src="../images/4.jpg" width="500" height="200"/></li>
+            <li><img src="../images/5.jpg" width="500" height="200"/></li>
+        </ul>
+        <!--小方块-->
+        <ol id="ol">
+
+        </ol>
+        <!--小三角-->
+        <div id="arr">
+            <span id="left"><</span>
+            <span id="right">></span>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        var box = document.getElementById("out");
+        var inner = document.getElementById("inner");
+        var ul = document.getElementById("ul");
+        var ulLiArr = ul.children;
+        var ol = document.getElementById("ol");
+        var arr = document.getElementById("arr");
+        var right = document.getElementById("right");
+        var left = document.getElementById("left");
+        var imgWidth = inner.offsetWidth;
+        //需求1：根据ul里面li的个数添加ol里面的li；点亮ol里面第一个li;复制ul里第一张li添加到ul最末尾;
+        //根据ul里面li的个数添加ol里面的li
+        for (var i = 0; i < ulLiArr.length; i++) {
+            var olLi = document.createElement("li");
+            olLi.innerHTML = i + 1;
+            ol.appendChild(olLi);
+        }
+        var olLiArr = ol.children;
+        olLiArr[0].className = "current";
+
+        var newLi = ulLiArr[0].cloneNode(true);
+        ul.appendChild(newLi);
+        // 让图片随数字滚动
+        for (var i = 0; i < olLiArr.length; i++) {
+            olLiArr[i].onmouseover = function () {
+                olLiArr[i].index = i;
+                for (var j = 0; j < olLiArr.length; j++) {
+                    olLiArr[j].className = "";
+                }
+                this.className = "current";
+                var distance = -imgWidth * this.index;
+                fn(ul, distance);
+                olLiIndex = this.index;
+                ulLiIndex = this.index;
+            }
+        }
+
+
+        var olLiIndex = 0;
+        var ulLiIndex = 0;
+        right.onclick = autoPlay;
+        // 左侧按钮，逻辑相反
+        left.onclick = function () {
+            ulLiIndex--;
+            olLiIndex--;
+            if (olLiIndex === -1) {
+                olLiIndex = olLiArr.length - 1;
+            }
+            if (ulLiIndex === -1) {
+                ul.style.left = -(ulLiArr.length - 1) * imgWidth + "px";
+                ulLiIndex = ulLiArr.length - 2;
+            }
+            for (var i = 0; i < olLiArr.length; i++) {
+                olLiArr[i].className = "";
+            }
+            olLiArr[olLiIndex].className = "current";
+            var distance = -imgWidth * ulLiIndex;
+            fn(ul, distance);
+        }
+
+
+        var timer = setInterval(autoPlay, 1500);
+        box.onmouseenter = function () {
+            arr.style.display = "block";
+            clearInterval(timer);
+        }
+        box.onmouseleave = function () {
+            arr.style.display = "none";
+            timer = setInterval(autoPlay,1500);
+        }
+        //右侧按钮逻辑
+        function autoPlay() {
+            ulLiIndex++;
+            olLiIndex++;
+            if(olLiIndex === olLiArr.length){
+                olLiIndex = 0;
+            }
+            if(ulLiIndex === ulLiArr.length){
+                ul.style.left = 0;
+                ulLiIndex = 1;
+            }
+            for(var j = 0; j < olLiArr.length; j++){
+                olLiArr[j].className = "";
+            }
+            olLiArr[olLiIndex].className = "current";
+            var distance = -imgWidth * ulLiIndex;
+            fn(ul,distance);
+        }
+    }
+
+
+    //匀速动画封装(1.让那个元素移动;  2.移动到哪里)
+    function fn(ele,target) {
+        clearInterval(ele.timer);
+        ele.timer = setInterval(function () {
+            var step = target > ele.offsetLeft ? 10 : -10;
+            ele.style.left = ele.offsetLeft + step + "px";
+            if(Math.abs(target - ele.offsetLeft) <= Math.abs(step)){
+                ele.style.left = target + "px";
+                clearInterval(ele.timer);
+            }
+        },20);
+    }
+</script>
+</body>
+</html>
+

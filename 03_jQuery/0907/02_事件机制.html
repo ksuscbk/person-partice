@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // 简单事件绑定   delegate    bind
+        //  on
+//        $("#box").on("click",function (e) {
+//            alert(123);
+//        })
+
+        $("#box").on({
+            "click":function () {
+                alert(123);
+            },
+            "mouseenter":function (e) {
+                alert(e.data.name);
+            }
+        },{name:"zs", age:20});
+    </script>
+</body>
+</html>

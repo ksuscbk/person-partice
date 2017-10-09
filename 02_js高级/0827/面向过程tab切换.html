@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+        width: 250px;
+        height: 200px;
+        border: 1px solid black; 
+        display: none;
+        text-align: center;
+        line-height: 200px;
+        font-size: 30px;
+        }
+        .active {
+        background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- input:button[value='按钮$']*3+div{内容$}*3 -->
+
+    <input type="button" value="按钮1" class="active">
+    <input type="button" value="按钮2">
+    <input type="button" value="按钮3">
+    <div style="display:block">内容1</div>
+    <div>内容2</div>
+    <div>内容3</div>
+</body>
+<script>
+    (function(window){
+        function Tab(){
+            this.aInp = document.getElementsByTagName("input");
+            this.aDiv = document.getElementsByTagName("div");
+            this.init();
+        }
+        Tab.prototype.init = function(aInp){
+            var that = this;
+            for(var i=0;i<aInp.length;i++){
+                aInp[i.index]=i;
+                
+                aInp[i].onclick = function(){
+                    that.fnFor();
+                }
+            }
+        }
+        Tab.prototype.fnFor = function(aInp, aDiv){
+            for(var i=0;i<aInp.length;i++){
+                aInp[i].className = "";
+                aDiv[i].style.display = "none";
+            }
+            this.className = "active";
+            aDiv[this.index].style.display = "block";
+        }
+
+        window.Tab = Tab;
+    })(window);
+    var tab1 = new Tab();
+</script>
+<!-- <script>
+    var aInp = document.getElementsByTagName("input");
+    var aDiv = document.getElementsByTagName("div");
+    
+    for(var i = 0; i < aInp.length; i++) {
+        aInp[i].index = i;
+        aInp[i].onclick = function(){
+        for(var i = 0; i < aInp.length; i++) {
+            aInp[i].className = "";
+            aDiv[i].style.display = "none";
+        }
+        this.className = "active";
+        aDiv[this.index].style.display = "block";
+        }
+    }
+</script>-->
+</html>

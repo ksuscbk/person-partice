@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>我是innerHTML<p>我是P标签</p></div>
+    <div>
+        我是innerTEXT<p>我是P标签</p>
+    </div>
+    <div>
+        <input type="text" value="妖妖切克闹"/>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var div1 = document.getElementsByTagName("div")[0];
+            var div2 = document.getElementsByTagName("div")[1];
+            var inp = document.getElementsByTagName("input")[0];
+
+            document.onclick = function () {  //页面点击时触发事件
+//                console.log(inp);          获取的是整个input标签
+//                inp.value = "我能控制啥";   控制的就是input里面的value啊
+
+                console.log(div1.innerHTML);
+                div1.innerHTML = "我是innerHTML赋值的内容<img src='images/love.JPG'>";
+                console.log(div2.innerText);
+                div2.innerText = "我是innertext赋值的内容<b>加粗</b>";
+            }
+
+        }
+
+
+
+    </script>
+</body>
+</html>

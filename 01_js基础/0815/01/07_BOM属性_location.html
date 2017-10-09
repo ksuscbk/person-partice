@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //location   和地址有关（网址） window的一个属性，他的值是一个对象，有属性和方法
+        //属性
+
+            console.log(location.href);       //页面地址
+            console.log(location.hash);       //返回url后面的内容
+            console.log(location.host);       //主机名+ 端口名
+            console.log(location.hostname);   //主机名
+            console.log(location.pathname);   //url的路径部分
+            console.log(location.protocol);   //协议
+            console.log(location.search);     //查询字符串
+
+        // 方法
+        //assign页面跳转  跳转并记录到历史记录中 撤回原来页面
+        document.onclick = function () {
+//            location.assign("http://www.baidu.com");
+
+
+
+//            console.log(location.href);
+//            location.href = "http://www.baidu.com";   //跳转到···
+
+            //页面跳转
+//            location.replace("http://www.jd.com");
+
+
+            //重新加载
+            location.reload();
+        }
+
+    </script>
+</body>
+</html>

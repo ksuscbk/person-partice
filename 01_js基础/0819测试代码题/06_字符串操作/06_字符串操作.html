@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>字符串操作</title>
+</head>
+<body>
+    <script>
+        /*var str = "get-element-by-id";
+        tuoFengName(str);
+        function tuoFengName (str) {
+            //思路:先用字符串的split()方法和数组的join()方法得到想要的字符串，再将字符串改为驼峰命名
+            var arr = str.split("-");
+            console.log(arr);
+            str = arr.join("");      //得到字符串
+
+
+
+            // 获取想要改变的字符的索引值
+            var index1 = str.indexOf("element");
+            var index2 = str.indexOf("by");
+            var index3 = str.indexOf("id");
+            //这个位置该怎么写replace();方法的第一个参数呢
+            str = str.replace(str.charAt(index1), str.charAt(index1).toUpperCase());
+            str = str.replace(str.charAt(index2), str.charAt(index2).toUpperCase());
+            str = str.replace(str.charAt(index3), str.charAt(index3).toUpperCase());
+            document.write(str);
+            console.log(str);
+            document.write("<br><br><br>是不是思路错了啊?");
+        }*/
+        var msg = "get-element-by-id";
+        var o = {
+            trans:function (msg){
+                var newArr = msg.split('-');
+                for(var i = 1; i < newArr.length; i++){
+                    newArr[i] = newArr[i].charAt(0).toUpperCase() + newArr[i].substr(1,newArr[i].length-1);
+                }
+                msg = newArr.join('');
+                console.log(msg);
+            }
+        };
+        o.trans('get-element-by-id');
+    </script>
+</body>
+</html>

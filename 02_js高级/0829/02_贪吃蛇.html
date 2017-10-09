@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇</title>
+	<style>
+		#map {
+			width: 800px;
+			height: 600px;
+			position: relative;
+			background-color: lightblue;
+			margin: 20px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+    <script src="food.js"></script>
+    <script src="snake.js"></script>
+	<script>
+		//  模块化 封装起来
+		(function (Food,Snake) {
+		    function Game (map) {
+                this.Food = new Food();
+                this.Snake = new Snake();
+                this.map = map;
+            }
+            Game.prototype.start = function () {
+                this.Food.render(this.map);
+                this.Snake.render(this.map);
+                runSnake(this);
+                bindKey(this);
+            }
+            // 设置定时器让蛇扭起来
+            function runSnake (that) {
+                var timer = setInterval(function () {
+                    // 定时器调用蛇移动的方法
+                    that.Snake.move(that.Food, that.map);
+                    // 定时器调用生成蛇的方法
+                    that.Snake.render(that.map);
+                    // 判断是否撞墙
+                    var hx = that.Snake.body[0].x * that.Snake.width;
+                    var hy = that.Snake.body[0].y * that.Snake.height;
+                    var maxx = that.map.offsetWidth - that.Snake.width;
+                    var maxy = that.map.offsetHeight - that.Snake.height;
+                    if (hx == 0 || hy == 0 || hx > maxx || hy > maxy) {
+                        clearInterval(timer);
+                        alert("游戏结束");
+                    }
+                }, 100);
+            }
+            // 绑定键盘事件
+            function bindKey (that) {
+                document.addEventListener("keydown", function(e) {
+                    e = e || event;
+                    switch (e.keyCode) {
+                        case 37 :
+                            that.Snake.direction = "left";
+                            break;
+                        case 38 :
+                            that.Snake.direction = "up";
+                            break;
+                        case 39 :
+                            that.Snake.direction = "right";
+                            break;
+                        case 40 :
+                            that.Snake.direction = "down";
+                            break;
+                    }
+                } ,false)
+            }
+            window.Game = Game;
+		})(Food, Snake);
+	</script>
+	<script>
+		var oMap = document.getElementById("map");
+	    var game = new Game(oMap);
+		game.start();
+	</script>
+</body>
+</html>

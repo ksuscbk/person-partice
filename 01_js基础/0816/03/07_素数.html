@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>素数</title>
+</head>
+<body>
+    <script>
+        var n = Number(prompt("请输入一个大于2的正整数："));
+        function isSuShu (n) {
+            var bool = true;
+            for (var i = 2; i < n; i++) {
+                if (n % i === 0) {
+                    bool = false;
+                }
+            }
+            if (bool) {
+                alert(n + "是质数");
+            }
+            if (bool === false) {
+                alert(n + "不是质数");
+            }
+        }
+        isSuShu(n);
+    </script>
+</body>
+</html>

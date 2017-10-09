@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>银行利率问题</title>
+</head>
+<body>
+    <script>
+        //本金10000元存入银行，年利率是千分之三，每过1年，将本金和利息相加作为新的本金。计算5年后，获得的本金是多少？
+        //思路：
+            //暂无  写着看吧
+        var money = 10000;
+        var rote = 0.003;
+        for(var i = 1;i<=5;i++) {    //5年循环5次,在循环体中得到每年结束时的本金利息和
+            money = money * (1+rote);
+        }
+        alert(money);               //没思路的时候先写写看吧，不能对着电脑看，哈哈，写着写着就出来了，用alert看钱更爽
+    </script>
+</body>
+</html>

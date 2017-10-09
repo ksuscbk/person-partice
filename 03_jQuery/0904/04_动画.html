@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            text-align: center;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换动画</button>
+    <div id="box"></div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // shou() 和 hide()
+            // 1.不写参数  相当于直接显示和隐藏
+            // 2.参数    a动画时间   接受字符串常量  "slow" 600   "normal" 400   "fast" 200
+                      // b回调函数   可选
+        $("button:eq(0)").click(function () {
+            $("#box").show(2000, function () {
+                alert("动画结束");
+            });
+        });
+        $("button:eq(1)").click(function () {
+            $("#box").hide(2000);
+        });
+
+        // 补充 切换显示隐藏  toggle()   参数  动画时间   回调函数
+        $("button:eq(2)").click(function () {
+            $("#box").toggle(3000, function () {
+                console.log("切换");
+            });
+        });
+    </script>
+</body>
+</html>

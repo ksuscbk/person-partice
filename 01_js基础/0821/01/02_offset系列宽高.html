@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 123px;
+            height: 234px;
+            padding: 10px;
+            border: 10px solid #000;
+            margin: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        伊人独立青莲下，青莲也映明眸盈
+    </div>
+    <script>
+        var div = document.getElementsByTagName("div")[0];
+        console.log(div.offsetWidth);
+        console.log(div.offsetHeight);         //返回值不带单位 ，只有数字
+
+        // 当一个盒子没有padding和border的时候，可以用offsetWidth/offsetHeight检测盒子的宽高
+    </script>
+</body>
+</html>

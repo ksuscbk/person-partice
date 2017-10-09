@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+</head>
+<body>
+    <script>
+        //事件解绑，兼容   removeEventListener(事件，函数名);  匿名函数绑定无法解绑
+        //思路
+
+        addEvent(document,"click",demo1);
+        addEvent(document,"click",demo2);
+        addEvent(document,"click",demo3);
+        function demo1 () {
+            console.log(1);
+        }
+        function demo2 () {
+            console.log(22);
+        }
+        function demo3 () {
+            console.log(333);
+        }
+
+        //解绑
+        removeEvent(document, "click", demo1);
+        removeEvent(document, "click", demo2);
+
+//        document.removeEventListener("click",demo2);    ie678不支持      ie678支持detachEvent();
+        document.detachEvent("onclick",demo1);
+        function addEvent (element, event, fn) {
+            //思路 浏览器支持就调用这个方法，不支持这个方法，就换另一种方法
+                //element.addEventListener 如果存在，打印函数体   如果不存在，undefined
+            if (element.addEventListener && typeof element.addEventListener === "function") {
+                element.addEventListener(event,fn);
+            }else if(element.attachEvent){ //DOM2
+                element.attachEvent("on" + event,fn);
+            }else {  //DOM0
+                ele["on" + event] = fn;
+            }
+        }
+
+        //思路 浏览器支持就调用这个方法，不支持这个方法，就换另一种方法
+        //封装 ：
+        // a 参数 ： 1.事件  2.事件源 3事件驱动程序
+        // b 返回值  需要，需要的是功能
+        function removeEvent (element, event, fn) {
+            if (element.removeEventListener && typeof element.removeEventListener === "function") {
+                element.removeEventListener(event, fn);
+            }else if(element.detachEvent) {
+                element.detachEvent("on" + event, fn);
+            }else {
+                element["on"+ event] = null;  //DOM0
+            }
+        }
+    </script>
+</body>
+</html>

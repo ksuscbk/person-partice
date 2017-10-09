@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>indexOf</title>
+</head>
+<body>
+    <script>
+        String.prototype.indexOf = function (str, startInx) {
+            // 给字符查索引
+            // 查不到返回-1   查到返回索引值
+            startInx = startInx || 0;
+            for (var i = startInx; i < this.length; i++) {
+                // 如果要查找的字符找到了  返回索引值
+                if (str == this[i]) {
+                    return i;
+                }
+            }
+        }
+        var str = "shhksafhjdkhsdkj";
+        console.log(str.indexOf("k"));
+    </script>
+</body>
+</html>

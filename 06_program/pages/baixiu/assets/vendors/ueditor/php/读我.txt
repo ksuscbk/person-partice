@@ -1,0 +1,8 @@
+当我们使用百度编辑器的时候，它会自动帮我们做图片的上传，上传到baixiu的根目录下自动创建了一个 ueditor文件夹
+
+做路径设置，不要默认的
+
+E:\PHP web\study\baixiu\assets\vendors\ueditor\php
+
+里面有个config.json   修改里面的路径
+

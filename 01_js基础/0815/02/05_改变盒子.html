@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>改变盒子样式</title>
+    <style>
+        body {
+            background-color: #cff;
+            text-align: center;
+        }
+        button {
+            width: 200px;
+            height: 60px;
+            font-size: 26px;
+        }
+        .div {
+            width: 700px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 40px;
+            background-color: silver;
+            color: hotpink;
+            margin: 40px auto;
+        }
+        .dis {
+
+            height: 200px;
+            background-color: #ccc;
+            line-height: 200px;
+            font-size: 60px;
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <button>如意金箍棒</button>
+    <div class="div">
+        I'm a box for display!!!
+    </div>
+    <script>
+        window.onload = function () {
+            var but = document.getElementsByTagName("button")[0];
+            var div = document.getElementsByTagName("div")[0];
+            but.onclick = function () {
+                div.className = "dis";
+            }
+            div.onclick = function () {
+                div.className = "div";
+            }
+        }
+
+    </script>
+</body>
+</html>

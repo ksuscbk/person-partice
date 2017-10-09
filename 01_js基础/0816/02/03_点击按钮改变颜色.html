@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            text-align: center;
+            padding-top: 100px;
+            background-color: #ccc;
+        }
+        button {
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 0 20px 0;
+            background-color: silver;
+        }
+    </style>
+</head>
+<body>
+<button>星辰泪</button>
+<button>星辰泪</button>
+<button>星辰泪</button>
+<button>星辰泪</button>
+<button>星辰泪</button>
+<script>
+    window.onload = function () {
+        var butArr = document.getElementsByTagName("button");
+        for (var i = 0; i < butArr.length; i++) {
+            butArr[i].onclick = function () {
+                for (var j = 0; j < butArr.length; j++) {
+                    butArr[j].style.backgroundColor = "silver";
+                }
+                this.style.backgroundColor = "deepskyblue";
+
+        }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .box {
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            overflow: hidden;
+            color: #eee;
+        }
+        ul {
+            height: 40px;
+        }
+        ul li {
+            float: left;
+            width: 80px;
+            height: 40px;
+            font: 500 20px/40px "simsun";
+            text-align: center;
+            cursor: pointer;
+            background-color: deepskyblue;
+        }
+        span {
+            display: none;
+            width: 400px;
+            height: 260px;
+            background-color: hotpink;
+            text-align: center;
+            font: 600 70px/260px "simsun";
+        }
+        .current {
+            background-color: hotpink;
+        }
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li class="current">鞋子</li>
+        <li>袜子</li>
+        <li>裤子</li>
+        <li>裙子</li>
+        <li>帽子</li>
+    </ul>
+
+    <span class="show">鞋子区域</span>
+    <span>袜子区域</span>
+    <span>裤子区域</span>
+    <span>裙子区域</span>
+    <span>帽子区域</span>
+
+    <script>
+        window.onload = function () {
+            // 需求1 鼠标移到导航栏 上面的背景色变为hotpink  其余的为deepskyblue
+            // 需求2 同时下面的区域切换为对应的区域
+            //获取事件源与相关元素
+            var liArr = document.getElementsByTagName("li");
+            var spanArr = document.getElementsByTagName("span");
+            //绑定事件
+            for (var i = 0; i < liArr.length; i++) {          //为每一个li绑定事件
+                liArr[i].index = i;             //自定义属性保存索引值
+                liArr[i].onmouseover = function () {
+                    for (var j = 0; j < liArr.length; j++) {
+                        //在for循环中用排他思想的方法
+                        liArr[j].style.backgroundColor = "deepskyblue";
+                        spanArr[j].className = "";
+                    }
+                    this.style.backgroundColor = "hotpink";
+                    var index = this.index;
+                    spanArr[index].className = "show";
+                }
+
+            }
+        }
+    </script>
+
+</div>
+</body>
+</html>

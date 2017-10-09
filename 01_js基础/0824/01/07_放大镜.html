@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 350px;
+            height: 350px;
+            margin: 100px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        .big {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 360px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            display: none;
+        }
+
+        .mask {
+            width: 175px;
+            height: 175px;
+            background: rgba(255, 255, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            display: none;
+        }
+
+        .small {
+            position: relative;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box" id="box">
+        <!--左侧盒子-->
+        <div class="small" id="small">
+            <img src="../images/001.jpg" alt=""/>
+            <!--黄盒子-->
+            <div class="mask" id="mask"></div>
+        </div>
+        <!--右侧盒子-->
+        <div class="big" id="big">
+            <!--大图片-->
+            <img src="../images/0001.jpg" alt=""/>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            //需求1：鼠标进入小盒子显示黄盒子和大盒子，移开隐藏;
+            //需求2：鼠标进入小盒子，黄盒子跟随移动;(案例2+案例3)
+            //需求3：黄盒子跟随的同时，大盒子里面的图片等比例移动;(比例有两种)
+            var box = document.getElementById("box");
+            var small = document.getElementById("small");
+            var mask = document.getElementById("mask");
+            var big = document.getElementById("big");
+            var bigImg = big.getElementsByTagName("img")[0];
+
+            small.onmouseenter = function () {
+                show(mask);
+                show(big);
+            }
+            small.onmouseleave = function () {
+                hide(mask);
+                hide(big);
+            }
+
+            small.onmousemove = function () {
+                var event = event || window.event;
+                // 鼠标在页面中的距离
+                var pagex = event.pageXOffset || event.clientX + scrollLeft();
+                var pagey = event.pageYOffset || event.clientY + scrollTop();
+                // 盒子在页面中的位置
+                var boxx = box.offsetLeft;
+                var boxy = box.offsetTop;
+
+                var x = pagex - boxx - mask.offsetWidth / 2;
+                var y = pagey - boxy - mask.offsetHeight / 2;
+                if (x < 0) {
+                    x = 0;
+                }
+                if (x > small.offsetWidth - mask.offsetWidth) {
+                    x = small.offsetWidth - mask.offsetWidth;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+                if (y > small.offsetHeight - mask.offsetHeight) {
+                    y = small.offsetHeight - mask.offsetHeight;
+                }
+
+                mask.style.marginLeft = x + "px";
+                mask.style.marginTop = y + "px";
+
+                // 比例
+                var n = bigImg.offsetWidth / small.offsetWidth;
+                var bigy = n * y;
+                var bigx = n * x;
+                bigImg.style.marginLeft = -bigx + "px";
+                bigImg.style.marginTop = -bigy + "px";
+            }
+
+
+
+
+
+
+
+
+
+
+            function hide (ele) {
+                ele.style.display = "none";
+            }
+            function show (ele) {
+                ele.style.display = "block";
+            }
+
+
+
+            function scrollLeft () {
+                return window.pageXOffset || document.documentElement.scrollLeft;
+            }
+            function scrollTop () {
+                return window.pageYOffset || document.documentElement.scrollTop;
+            }
+        }
+    </script>
+
+</body>
+</html>

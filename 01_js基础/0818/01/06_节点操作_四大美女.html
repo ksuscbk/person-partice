@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button>
+        生成四大美女
+    </button>
+    <ul>
+
+    </ul>
+    <script>
+        window.onload = function () {
+            var but = document.getElementsByTagName("button")[0];
+            var ul = document.getElementsByTagName("ul")[0];
+            var arr = ["昭君出塞", "西施浣纱", "贵妃醉酒", "貂蝉拜月"];
+            but.onclick = function () {
+                for (var i = 0; i < arr.length; i++) {
+                    var newLi = document.createElement("li");
+                    newLi.innerHTML = arr[i];
+                    ul.appendChild(newLi);
+                }
+                var liArr = ul.children;
+                for (var i = 0; i < liArr.length; i++) {
+                    liArr[i].onmouseover = function () {
+                        for (var j = 0 ; j < liArr.length; j++) {
+                            liArr[j].style.backgroundColor = "";
+                        }
+                        this.style.backgroundColor = "deeppink";
+                    }
+                }
+//                var li1 = document.createElement("li");
+//                var li2 = document.createElement("li");
+//                var li3 = document.createElement("li");
+//                var li4 = document.createElement("li");
+//                li1.innerHTML = "昭君出塞";
+//                li2.innerHTML = "西施浣纱";
+//                li3.innerHTML = "贵妃醉酒";
+//                li4.innerHTML = "貂蝉拜月";
+//                ul.appendChild(li1);
+//                ul.appendChild(li2);
+//                ul.appendChild(li3);
+//                ul.appendChild(li4);
+            }
+        }
+    </script>
+</body>
+</html>

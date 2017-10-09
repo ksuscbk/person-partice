@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>节点创建</title>
+</head>
+<body>
+<button>
+    创建节点
+</button>
+<ul>
+    <li>原生节点1</li>
+    <li>原生节点2</li>
+</ul>
+    <script>
+        window.onload = function () {
+            var but = document.getElementsByTagName("button")[0];
+            var ul = document.getElementsByTagName("ul")[0];
+            var liArr = ul.getElementsByTagName("li");
+            but.onclick = function () {
+//                liArr[0].remove();   //H5新增方法 删除自己
+
+//                liArr[1].parentNode.removeChild;  //通过爸爸删除自己
+                var i = document.createElement("li");
+                i.innerHTML = "kasjdakdk";
+                ul.replaceChild(i, liArr[1]);
+            }
+        }
+
+    </script>
+</body>
+</html>

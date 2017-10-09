@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>11月份</title>
+</head>
+<body>
+    <script>
+        var now = new Date().getTime();
+        var work = new Date("2017/11/1 12:00:00");   //在new出Date对象时给固定时间的话要给时间加引号
+        function takeTime (now, work) {
+            var time = work - now;
+            var days = parseInt(time/1000/60/60/24);
+            var hours = parseInt(time/1000/60/60%24);
+            var minute = parseInt(time/1000/60%60);
+            var seconds = parseInt(time/1000%60);
+            var ms = parseInt(time%1000);
+            document.write("距离找工作还有" + days + "天" + hours + "时" + minute + "分" + seconds + "秒" + ms + "毫秒。工资就是赤裸裸的诱惑")
+        }
+        takeTime(now, work);
+    </script>
+</body>
+</html>

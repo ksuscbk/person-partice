@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var arr = [1,3,6,7,9,3,0];
+        //1.concat(); 把参数拼接到当前数组
+//        console.log(arr.concat("看"));
+
+
+        //2.slice  从当前数组中截取一个新的数组，不影响原来的数组，参数start从0开始,end从1开始
+        // 截取  按照索引住截取  取不到end   包左不包右  返回的是新数组，原数组不被修改
+        //只有一个值 是从这个值取到最后     负数是从后往回截     slice(3,0);无法截取，返回空数组
+//        console.log(arr.slice(1,3));
+
+
+
+        //3.splice();  删除或替换当前数组的某些项目
+        // 参数 （索引值（开始位置） ， count， 替换内容） splice()返回的是截取的部分
+        // 指定位置  添加  删除 替换    修改原数组
+//        console.log(arr.splice(3));     //从arr[3]到end
+//        console.log(arr.splice(3,2));
+        // 多个替换
+        var a = arr.splice(3,3,"关羽","张飞","赵云");    //splice()返回的是截取的部分
+        console.log(a);
+        console.log(arr);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button>
+        复制节点
+    </button>
+    <ul>
+        <li>
+            原生节点
+        </li>
+        <li id="li2">
+            原生节点
+        </li>
+        <li>
+            原生li3
+        </li>
+    </ul>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName("button")[0];
+            var ul = document.getElementsByTagName("ul")[0];
+            var li2 = document.getElementById("li2");
+            btn.onclick = function () {
+            //复制节点1种方法        深层复制  浅层复制
+                //无法复制元素上的事件    jquery可以
+                // 浅层复制   不写参数和写个false都是浅层复制
+                //深层复制    参数为true
+                var newLi2 = li2.cloneNode();
+//                var newLi2 = li2.cloneNode(true);  深层复制
+                ul.appendChild(newLi2);
+            }
+            li2.onclick = function () {
+                alert("1");
+            }
+        }
+    </script>
+</body>
+</html>

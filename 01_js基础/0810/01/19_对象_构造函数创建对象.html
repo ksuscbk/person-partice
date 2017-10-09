@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>构造函数创建对象</title>
+</head>
+<body>
+    <script>
+        //构造函数创建对象
+            //不用创建空白对象了，因为new帮我们做了
+            //不用再return了，因为new帮我们做了
+            //this代指创建的对象，因为new帮我们做了
+         function Person (name,age) {
+             this.name = name;
+             this.age = age;
+             this.say =  function () {
+                 alert (this.name + "说：扶我起来，我要去吃汉堡");
+             }
+         }
+        var person1 = new Person("焦强",22);
+        var person2 = new Person("帅龄斐",22);
+        console.log(person1.name);
+        console.log(person2.age);
+        person1.say();
+        person2.say();
+        console.log(person1);
+        console.log(person2);
+
+
+    </script>
+</body>
+</html>

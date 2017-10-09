@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件绑定封装</title>
+</head>
+<body>
+    <script>
+        //事件绑定封装
+        function addEvent (element, event,fn) {
+            if (element.addEventListener && typeof element.addEventListener === "function") {
+                element.addEventListener(event, fn);
+            } else if (element.attachEvent) {
+                element.attachEvent(event, fn);
+            }
+            else {
+                element["on" + event] = fn;
+            }
+        }
+    </script>
+</body>
+</html>

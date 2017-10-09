@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    跳转到
+</div>
+<p style="cursor: pointer;">
+    跳转到
+</p>
+
+    <script>
+        //back();    forward();      go();  浏览器网址左边的部分
+        //go(-1) ===  back();     go(0)刷新     go(1)  === forward();
+        //back();    forward();      go();  浏览器网址左边的部分
+        var p = document.getElementsByTagName("p")[0];
+        var div = document.getElementsByTagName("div")[0];
+        p.onclick = function () {
+            location.href = "demo.html";
+        }
+    </script>
+</body>
+</html>

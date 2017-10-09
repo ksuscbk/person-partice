@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>client</title>
+</head>
+<body>
+    <script>
+        // 三大系列的区别
+//        clientWidth = width + padding;
+//        clientHeight = height + padding;
+//        offsetWidth = width + padding + border;
+//        offsetHeight = height + padding + border;
+//        scrollWidth = 内容宽度(不包含border)
+//        scrollHeight = 内容高度(不包含border)
+
+
+        //2.left/top;
+        //        offsetTop/offsetLeft ：
+        //        调用者：任意元素。(盒子为主)
+        //        嘛作用：距离父系盒子中带有定位的距离。
+
+        //        scrollTop/scrollLeft:(盒子也可以调用，必须有滚动条)
+        //        调用者：document.body.scrollTop/.....(window)
+        //        嘛作用：浏览器无法显示的部分（被卷去的部分）。
+
+        //        clientY/clientX:（clientTop/clientLeft 值的是border）
+        //        调用者：event.clientX(event)
+        //        嘛作用：鼠标距离浏览器可视区域的距离（左、上）。
+
+
+        //区别3：
+        //a.offsetParent;                      （不用）
+        //b.window.scrollTo(x,y);              （可以页面跳转）
+        //c.body/html调用clientWidth/Height;    （浏览器可视区域的宽高）
+
+
+
+    </script>
+</body>
+</html>

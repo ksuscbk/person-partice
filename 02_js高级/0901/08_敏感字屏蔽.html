@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var str = '菲称仁爱礁附近17艘中国船均在菲监视之下';
+        //  "中国船" "监视之下" "非"
+        var re = /菲|中国船|监视之下/g;
+        var result = str.replace(re, function ($0) {
+            var temp = "";
+            for (var i = 0; i < $0.length; i++) {
+                temp += "*";
+            }
+            return temp;
+        })
+        console.log(result);
+
+
+
+        var str = "好好学习，天天向上！好好学习，天天向上！好好学习，天天向上！好好学习，天天向上！";
+        // 学习  向上
+
+        console.log(str.replace(/学习|向上/g, function ($0) {
+            var temp = "";
+            for (var i = 0; i < $0.length; i++) {
+                temp += "*";
+            }
+            return temp;
+        }));
+    </script>
+</body>
+</html>

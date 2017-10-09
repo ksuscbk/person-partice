@@ -1,0 +1,266 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .out {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        .inner {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .inner li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .inner ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .out ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .out ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .out ol li.current {
+            background: orangered;
+        }
+
+        #arr {
+            display: none;
+        }
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--外部盒子-->
+<div class="out" id='out'>
+    <!--内部盒子-->
+    <div class="inner" id="inner">
+        <!--图片们-->
+        <ul id="ul">
+            <li><img src="../images/1.jpg" width="540" height="300"/></li>
+            <li><img src="../images/2.jpg" width="540" height="300"/></li>
+            <li><img src="../images/3.jpg" width="540" height="300"/></li>
+            <li><img src="../images/4.jpg" width="540" height="300"/></li>
+            <li><img src="../images/5.jpg" width="540" height="300"/></li>
+        </ul>
+        <!--小方块-->
+        <ol id="ol">
+
+        </ol>
+        <!--小三角-->
+        <div id="arr">
+            <span id="left"><</span>
+            <span id="right">></span>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        //需求：无缝滚动轮播图;
+        //原理：复制第一张到最末尾，第二轮从第一张滑向第二张的时候瞬间闪动动第一张；
+
+        //需求1：复制ul里第一张li添加到ul最末尾，根据ul里面li的个数添加ol里面的li；点亮ol里面第一个li;
+        //需求2：鼠标放到ol里面的li，让ul移动;（案例1）
+        //需求3：点击右侧按钮，让ul向左移动；（案例2+无缝滚动原理）
+        //需求4：点击左侧按钮，让ul向右移动；（案例2+无缝滚动原理）（逻辑和右侧相反）
+        //需求5：添加定时器，清除定时器；(逻辑和右侧按钮一样)
+
+
+        //获取相关元素
+        var box = document.getElementById("out");
+        var inner = document.getElementById("inner");
+        var imgWidth = inner.offsetWidth;
+        var ul = document.getElementById("ul");
+        var ulLiArr = ul.children;
+        var ol = document.getElementById("ol");
+        var arr = document.getElementById("arr");
+        var left = document.getElementById("left");
+        var right = document.getElementById("right");
+
+        //需求1：根据ul里面li的个数添加ol里面的li；点亮ol里面第一个li;复制ul里第一张li添加到ul最末尾;
+        //根据ul里面li的个数添加ol里面的li
+        for (var i = 0; i < ulLiArr.length; i++) {
+            var olLi = document.createElement("li");
+            olLi.innerHTML = i + 1;
+            ol.appendChild(olLi);
+        }
+        //点亮ol里面第一个li;
+        var olLiArr = ol.children;
+        olLiArr[0].className = "current";
+
+        //复制ul里第一张li添加到ul最末尾
+        var newLi = ulLiArr[0].cloneNode(true);
+        ul.appendChild(newLi);
+
+        // 让图片随数字滚动
+        for (var i = 0; i < olLiArr.length; i++) {
+            olLiArr[i].index = i;
+            olLiArr[i].onmouseover = function () {
+                //完成数字样式设置
+                for (var j = 0; j < olLiArr.length; j++) {
+                    olLiArr[j].className = "";
+                }
+                this.className = "current";
+                var distance = -imgWidth * this.index;
+                fn (ul, distance);
+                //bug: 小方块移动ul之后，索引值没有通知key和square;
+                ulLiIndex = this.index;
+                olLiIndex = this.index;
+            }
+        }
+
+
+
+        var ulLiIndex = 0;     // 图片ul索引值
+        var olLiIndex = 0;     // 数字ol索引值
+        //右侧按钮，绑定事件
+        right.onclick = autoPlay;
+        left.onclick = function () {
+            ulLiIndex--;
+            olLiIndex--;
+            //square最小索引值为0；超过这个值,等于-1的时候改为4；显示最后一个;
+            if (olLiIndex === -1) {
+                olLiIndex = olLiArr.length - 1;
+            }
+            //key的最小索引值为0；小于这个值，等于-1的时候，改为4；显示倒数第二个;
+            if (ulLiIndex === -1) {
+                //瞬间闪动到倒数第一张，在从倒数第一张滑向倒数第二张；
+                //显示倒数第一张，left值就为：-5张图片的宽
+                ul.style.left = -(ulLiArr.length - 1) * imgWidth + "px";
+                ulLiIndex = ulLiArr.length - 2;
+            }
+            //1.点亮盒子;    2.移动ul；
+            for (var j = 0; j < olLiArr.length; j++) {
+                olLiArr[j].className = "";
+            }
+            //不能在用this，用索引值来做;
+            olLiArr[olLiIndex].className = "current";
+            //2.移动ul；
+            var distance = -imgWidth * ulLiIndex;
+            fn(ul, distance);
+        }
+
+        var timer = setInterval(autoPlay, 1500);
+        box.onmouseenter = function () {//onmouseover和onmouseenter一样只不过一个支持冒泡，一个不支持冒泡；
+            arr.style.display = "block";
+            clearInterval(timer);
+        }
+        box.onmouseleave = function () {//onmouseout和onmouseleave一样只不过一个支持冒泡，一个不支持冒泡；
+            arr.style.display = "none";
+            timer = setInterval(autoPlay, 1500);
+        }
+
+
+            //右侧逻辑封装
+            function autoPlay () {
+                ulLiIndex++;
+                olLiIndex++;
+                if (olLiIndex === olLiArr.length) {
+                    olLiIndex = 0;
+                }
+                if (ulLiIndex === ulLiArr.length) {
+                    //瞬间闪动到第一张，在从第一张滑向第二张；
+                    //ulLiIndex的最大索引值为5；超过这个值，等于6的时候，改为1；显示第二个;
+                    ul.style.left = 0;
+                    ulLiIndex = 1;
+                }
+                //olLiIndex最大索引值为4；超过这个值,等于5的时候改为0；显示第一个;
+
+                for (var j = 0; j < olLiArr.length; j++) {
+                    olLiArr[j].className = "";
+                }
+                //不能再用this，用索引值来做;
+                olLiArr[olLiIndex].className = "current";
+                //2.移动ul；
+                var distance = -imgWidth * ulLiIndex;
+                fn(ul, distance);
+            }
+
+
+
+
+
+//    //匀速动画封装(1.让那个元素移动;  2.移动到哪里)
+            function fn(element, distance) {
+                clearInterval(element.timer);
+                element.timer = setInterval(function () {
+                    var step = distance > element.offsetLeft ? 5 : -5;
+                    element.style.left = element.offsetLeft + step + "px";
+                    if (Math.abs(distance - element.offsetLeft) <= 5) {
+                        element.style.left = distance + "px";
+                        clearInterval(element.timer);
+                    } /*else {
+                        element.style.left = element.offsetLeft + step + "px";
+                    }*/
+                }, 10);
+            }
+        }
+</script>
+
+</body>
+</html>
+

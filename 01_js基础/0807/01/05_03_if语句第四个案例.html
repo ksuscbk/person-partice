@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //4判断一个年份是闰年还是平年
+    //闰年：能被4整除，但不能被100整除的年份 或者 能被400整除的年份
+    var str3 = prompt("第四题 请输入年份");
+    var year = Number(str3);
+    if(year%4===0 && year%100!=0||year%400===0) {
+        alert("该年是闰年，绕死你个···");
+    }else {
+        alert("该年是平年");
+    }
+</script>
+</body>
+</html>

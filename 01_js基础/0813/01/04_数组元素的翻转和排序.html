@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //reverse();
+        var arr = [1, 2, 3, 4, 5];
+//        console.log(arr);
+//
+//        console.log(arr.reverse());
+//        var a = arr.reverse();
+//        console.log(a);
+//        function myReserve (arr) {
+//            for (var i = 0; i < arr.length / 2; i++) {
+//                var temp = arr[i];
+//                arr[i] = arr[arr.length - i - 1];
+//                arr[arr.length - 1 - i] = temp;
+//            }
+//            return arr;
+//        }
+//        console.log(myReserve(arr));         远离不是特别好，实际工作自己封装
+        //sort  排序   返回的是数组    从大到小排序           对字母也可以排序
+        //无参的时候按照数组中元素的unicode编码的首字母排序
+        //带参  对元素进行指定排序
+        arr.sort(function (a, b) {
+            return a - b;
+        });
+        console.log(arr);
+    </script>
+</body>
+</html>

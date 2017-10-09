@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        function Iphone4 (name, size, color) {
+            this.name = name;
+            this.size = size;
+            this.color = color;
+        }
+        Iphone4.prototype.listen = function () {
+            document.write("可以听歌");
+        }
+        Iphone4.prototype.play = function () {
+            document.write("可以玩游戏");
+        }
+        // 继承的使用方法
+        function Iphone5(name, size, color) {
+            // 继承Iphone4的所有属性
+            Iphone4.call(this, name, size, color);
+        }
+        // 继承Iphone4的方法
+        for (var attr in Iphone4.prototype) {
+            Iphone5.prototype[attr] = Iphone4.prototype[attr];
+        }
+        Iphone5.prototype.call = function () {
+            document.write("可以打电话");
+        }
+        var phone1 = new Iphone4("Iphone4", "4.0寸", "black");
+        var phone2 = new Iphone5("Iphone5", "4.7寸", "silver");
+        document.write(phone1.name + "<br>");
+        document.write(phone1.color + "<br>");
+        document.write(phone1.size + "<br>");
+        phone1.listen();
+        document.write("<br>" + phone2.name + "<br>");
+        document.write(phone2.color + "<br>");
+        document.write(phone2.size + "<br>");
+        phone2.listen();
+        document.write("<br>");
+        phone2.call();
+    </script>
+</body>
+</html>

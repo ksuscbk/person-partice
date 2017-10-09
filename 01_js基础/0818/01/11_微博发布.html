@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        div {
+            width: 600px;
+            padding: 10px;
+            border: 1px dotted #ccc;
+            margin: 100px auto;
+        }
+        textarea {
+            width: 460px;
+            height: 234px;
+            resize: none;
+            font-size: 22px;
+        }
+        label {
+            font-size: 22px;
+        }
+        button {
+            width: 60px;
+            height: 30px;
+            font-size: 18px;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            padding: 10px 70px;
+        }
+        li {
+            font: 500 20px/28px "simsun";
+            border-bottom: 1px dashed #ccc;
+        }
+        li a {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <label for="txt">请输入</label>
+    <textarea id="txt" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <ul>
+
+    </ul>
+</div>
+
+<script>
+    window.onload = function () {
+        //需求1：点击发布按钮，把textarea里面的内容设置成li标签添加到ul中;
+        //需求2：点击li里面的a链接，删除所在的li标签;
+        //获取相关元素
+        var txt = document.querySelector("#txt");
+        var btn = txt.nextElementSibling || txt.nextSibling;
+        var ul = document.getElementsByTagName("ul")[0];
+        //需求1：点击发布按钮，把textarea里面的内容设置成li标签添加到ul中;
+        btn.onclick = function () {
+            if (txt.value === "" || txt.value.trim().length === 0) {
+                alert("请输入你要发布的内容，不能为空！");
+                return;
+            }
+            // 把textarea里面的内容转换成li标签里的内容放到下面的ul中
+            var newLi = document.createElement("li");
+            newLi.innerHTML = txt.value +"<a href='#'>删除帖子</a>";
+            ul.insertBefore(newLi, ul.children[0]);
+            txt.value = "";        //上传之后文本域清空
+
+
+            var a = newLi.getElementsByTagName("a");
+            a[0].onclick = function () {
+                //三种方法
+
+//                this.parentNode.parentNode.removeChild(this.parentNode);//用爷爷删爸爸
+
+//                this.parentNode.remove();             爸爸自己删除自己
+
+                ul.removeChild(newLi);              //ul删除新添加的儿子li
+            }
+        }
+
+
+
+    }
+</script>
+</body>
+</html>

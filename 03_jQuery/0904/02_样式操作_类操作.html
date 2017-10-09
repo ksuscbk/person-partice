@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .abc {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        .asd {
+            font-size: 30px;
+            color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="abc">
+        小青龙啊小青龙
+    </div>
+    <button>kasjdd</button>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // 1addClass("对应的类名")  多个类名用空格隔开
+        $("#box").addClass("asd");
+        // 2removeClass("对应的类名")   多个类名用空格隔开   如果不写参数，移除该对象身上所有的类
+//        $("#box").removeClass("abc");
+        // 3 hasClass("类名")   判断是否有这个类  返回值true   false
+
+//        console.log($("#box").hasClass());
+        // 4 切换类操作 toggleClass();
+       /* $("button").click(function () {
+            if ($("#box").hasClass("abc")) {
+                $("#box").removeClass("abc");
+            }else {
+                $("#box").addClass("abc");
+            }
+        })
+*/
+        $("button").click(function () {
+            $("#box").toggleClass("abc");
+        })
+    </script>
+</body>
+</html>

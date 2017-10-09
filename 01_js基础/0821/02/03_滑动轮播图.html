@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .outer {
+            border: 1px solid #ccc;
+            width: 490px;
+            height: 170px;
+            padding: 5px;
+            margin: 100px auto;
+        }
+        .inner {
+            width: 490px;
+            height: 170px;
+            position: relative;
+            overflow: hidden;
+        }
+        img {
+            /*vertical-align: top;*/
+            display: block;
+        }
+        ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 500%;
+        }
+        ul li {
+            float: left;
+        }
+        ol {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        ol li {
+            float: left;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #ccc;
+            margin: 0 5px;
+            text-align: center;
+            line-height: 16px;
+            cursor: pointer;
+            background-color: #fff;
+        }
+        .current {
+            color: #fff;
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner" id="inner">
+            <ul id="ul">
+                <li><a href="#"><img src="../01/images/01.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="../01/images/02.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="../01/images/03.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="../01/images/04.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="../01/images/05.jpg" alt=""/></a></li>
+            </ul>
+
+            <ol>
+                <li class="current">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ol>
+        </div>
+    </div>
+    <script>
+        //需求：鼠标进入哪个ol中的li,ul中的对应的li就移动到当前位置;
+        //思路：移动ul；
+        //步骤：
+        //1.老三步;
+        //2.点亮盒子;(排他思想)
+        var inner = document.getElementById("inner");
+        var ul = document.getElementById("ul");
+        var ol = ul.nextElementSibling || ul.nextSibling;
+        var liArr = ol.children;
+        var imgWidth = inner.offsetWidth;
+
+        for (var i = 0; i < liArr.length; i++) {
+            liArr[i].index = i;
+            liArr[i].onmouseover = function () {
+                // 排他思想
+                for (var j = 0; j < liArr.length; j++) {
+                    liArr[j].className = "";
+                }
+                this.className = "current";
+
+                var distance = -imgWidth * this.index;
+                fn(ul, distance);
+            }
+        }
+
+
+
+        
+
+        //匀速动画封装(1.让那个元素移动;  2.移动到哪里)
+        function fn(ele,target) {
+            //使用定时器之前，清除定时器；保证一个盒子一个定时器；多出触动事件也必须只有一个定时器;
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                //BUG1: 目标位置如果在前面步长为正数，在后面步长为负数;
+                var step = target>ele.offsetLeft?10:-10;
+                //赋值(走过了，可以在退回来)
+                ele.style.left = ele.offsetLeft + step + "px";
+                //判断：到达目标位置就清除定时器；
+                if(Math.abs(target-ele.offsetLeft) <= Math.abs(step)){
+                    ele.style.left = target+"px";
+                    clearInterval(ele.timer);
+                }
+            },13);
+        }
+    </script>
+
+
+</body>
+</html>

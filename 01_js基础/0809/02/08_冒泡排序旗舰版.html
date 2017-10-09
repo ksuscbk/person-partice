@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var arr = [2, 1, 5, 8, 9];
+        var m = 0;
+        var n = 0;
+        for (var i = 0; i < arr.length - 1; i++) {
+            var bool = true;
+            for (var j = 0; j < arr.length - 1 -j; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    bool = false;
+                }
+                n++;
+            }
+            m++;
+            if (bool) {
+                break;
+            }
+        }
+        console.log(arr);
+        console.log(m);
+        console.log(n);
+    </script>
+</body>
+</html>

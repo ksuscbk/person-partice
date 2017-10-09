@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //        3分数转换，把百分制转换成ABCDE   <60  E  60-69 D  70-79 C  80-89 B  90 - 100 A
+    var str2 = prompt("第三题：请输入学生成绩:");
+    var grade = Number(str2);
+    if(grade>=90&&grade<=100){
+        alert("学生成绩等级为A");
+    }else if(grade>=80&&grade<=89){
+        alert("学生成绩等级为B");
+    }else if(grade>=70&&grade<=79){
+        alert("学生成绩等级为C");
+    }else if(grade>=60&&grade<=69){
+        alert("学生成绩等级为D");
+    }else if(grade<=60){
+        alert("学生成绩等级为E");
+    }else {
+        alert("学生成绩输入有误");
+    }
+</script>
+</body>
+</html>

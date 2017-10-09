@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var str = "";
+        for(var j=1;j<=9;j++) {
+            for(var i = 1;i<=j;i++) {
+                str += i + "*" + j + "=" + i*j +" ";  //末尾加一个空格字符串是为了隔开相邻的式子
+            }
+            str+="\n";            //每次循环完一行就换行
+        }
+        console.log(str);         //打印出乘法表
+    </script>
+</body>
+</html>

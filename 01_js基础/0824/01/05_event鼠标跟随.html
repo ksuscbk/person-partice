@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            width: 2000px;
+            height: 5000px;
+            position: relative;
+        }
+        img {
+            width: 80px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<img src="../images/1.jpg" />
+<script>
+    window.onload = function () {
+        var img = document.getElementsByTagName("img")[0];
+        document.onclick = function (event) {
+            var event = event || window.event;
+            var pagex = event.pageX || event.clientX + scrollLeft();
+            var pagey = event.pageY || event.clientY + scrollTop();
+
+//            img.style.left = pagex + "px";
+//            img.style.top = pagey + "px";
+
+            clearInterval(img.timer);
+            img.timer = setInterval(function () {
+                var stepx = (pagex - img.offsetLeft) / 10;
+                stepx = stepx > 0 ? Math.ceil(stepx) : Math.floor(stepx);
+                img.style.left = img.offsetLeft + stepx + "px";
+                var stepy = (pagey - img.offsetTop) / 10;
+                stepy = stepy > 0 ? Math.ceil(stepy) : Math.floor(stepy);
+                img.style.top = img.offsetTop + stepy + "px";
+                if (pagex === img.offsetLeft && pagey === img.offsetTop) {
+                    clearInterval(img.timer);
+                }
+            }, 12);
+
+        }
+
+
+        function scrollLeft() {
+            return window.pageXOffset || document.documentElement.scrollLeft;
+        }
+        function scrollTop() {
+            return window.pageYOffset || document.documentElement.scrollTop;
+        }
+    }
+</script>
+</body>
+</html>

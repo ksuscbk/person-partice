@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>百度搜索框</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body {
+            background-color: #cccccc;
+        }
+        div {
+            width: 500px;
+            margin: 200px auto;
+        }
+        input {
+            width: 380px;
+            height: 34px;
+            outline-style: none;
+            padding-left: 10px;
+            font-size: 18px;
+            float: left;
+        }
+        button {
+            width: 90px;
+            height: 38px;
+            float: right;
+        }
+        ul {
+            border: 1px dashed red;
+            border-top: 0;
+            float: left;
+            width: 372px;
+            padding: 10px;
+        }
+        ul li {
+            cursor: help;
+            font: 500 22px/28px "simsun";
+        }
+        ul li:hover {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text"/>
+        <button>百度一下</button>
+    </div>
+    <script>
+        window.onload = function () {
+            //需求 输入内容时，创建ul并显示，创建li放进ul里，将ul放进div中
+            // 模拟数据库
+            var oldArr = ["a", "ab", "akkj", "qwe", "q", "qw", "qwea", "qwef", "qwes"];
+            // 获取事件源
+            var inp = document.getElementsByTagName("input")[0];
+            var but = document.getElementsByTagName("button")[0];
+            var div = document.getElementsByTagName("div")[0];
+            inp.onkeyup = function () {
+                var ul = document.createElement("ul");
+                var newArr = [];
+
+                for (var i = 0; i < oldArr.length; i++) {
+                    if (oldArr[i].indexOf(this.value) === 0) {
+                        newArr.push(oldArr[i]);
+                    }
+                }
+
+                if (div.children.length === 3) {
+                    div.removeChild(div.children[2]);
+                    if (newArr.length === 0 || this.value === "") {
+                        return;
+                    }
+                }
+
+                for (var i = 0; i < newArr.length; i++) {
+                    var newLi = document.createElement("li");
+                    newLi.innerHTML = newArr[i];
+                    ul.appendChild(newLi);
+                }
+                div.appendChild(ul);
+            }
+        }
+    </script>
+</body>
+</html>

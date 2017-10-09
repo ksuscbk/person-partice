@@ -1,0 +1,211 @@
+﻿
+
+问题：你原来工作多长时间迭代一个版本？
+根据需求大小，如果是大的需求，半个月到20天，要迭代一次。
+小的需求我随时就改了，没有什么多长时间
+
+迭代：就是加功能，修改功能
+
+
+
+
+
+
+在处理功能时，同一个PHP文件处理了两种逻辑，分别以get方式请求时，一般用展示型的操作，例如显示网页内容。
+
+当以post方式请求时，一般处理数据，例如数据存入数据库
+
+值得注意的是上述方式只是开发当中的一种，也有展示内容和处理数据不是同一个php文件
+
+
+
+
+
+
+users.php 处理用户的 增 删 改 查 操作
+
+通过参数 action 的值来区别用户要执行的操作
+
+增加 使用 post 方式 action = 'add'
+修改 使用 post 方式 action = 'update'
+删除 使用 get 方式 action = 'delete'
+查询 使用 get 方式 action = 'edit'
+
+主逻辑：
+用户需要执行这么多的逻辑，所以需要条件进行判断，条件不存在，就创造条件，通过一个参数来实现
+
+先判断是不是post方式提交，因为提交表单是时候始终是以post形式提交的，既可以添加新用户，也可以修改老用户。
+再进行判断，如果是add执行添加逻辑，如果是update执行更新修改逻辑
+如果不是post，就是get方式，希望把所有用户信息以列表的形式展示出来
+在编辑和删除的时候依然可以执行逻辑
+
+
+编辑操作其实是两步：
+先把原来的数据找出来 叫edit（我们希望点击edit就展示一个页面给用户看，这个页面就包含了用户的原始数据，用户在这个基础上做修改操作，再去点击按钮的时候才会实现真正的修改操作，变成update）
+
+
+批量删除操作：
+操作前提是得告诉服务端想把哪几个删除，这几个获得方式完全靠前端用DOM操作去处理 
+比如点击勾选按钮，表单项里面有value值，获取这个value值，这个值就是用户对应的id，把这一个或多个id一起交给服务端，服务端再去做真实删除操作
+delete from users where id in (6,11)
+//删除用户，根据id去删除，（哪些id）第几个
+
+
+
+/*数组的字符串拼接
+$sql = 'INSERT INTO ' . $table . ' (' . implode(', ', $keys) . ') VALUES("' . implode('", "', $values) . '")';
+
+'INSERT INTO users (key1,key2,key3) VALUES(val1,val2,val3) ' ;
+ 1 2 3 
+
+'INSERT INTO  '  . $table . '( '  .  implode( ', ' ,   $keys)    .' ) VALUES( "' .  arr  .  '") ' ;
+
+
+//变量和方法是可以直接暴露的，所以要分割前后语句
+//value一般都是双引号引起来的，但是用逗号拼接的时候，逗号的前后都得有一个双引号
+
+
+INSERT INTO users ( implode(',',$keys) ) VALUES( implode(',',$vals) );
+
+'INSERT INTO users ( implode(',',$keys) ) VALUES( implode(",",$vals) )';
+
+'INSERT INTO '.$table.' ( implode(',',$keys) ) VALUES( implode(",",$vals) )';
+
+'INSERT INTO '.$table.' (' .implode(',',$keys). ') VALUES( '.implode(",",$vals).' )';
+*/
+
+
+
+
+状态：   status      
+      unactivated 未激活的
+      activated   已激活的
+      forbidden   禁止的
+      trashed     已删除的
+
+
+
+/*
+当我们使用百度编辑器的时候，它会自动帮我们做图片的上传，上传到baixiu的根目录下自动创建了一个 ueditor文件夹
+
+做路径设置，不要默认的
+
+E:\PHP web\study\baixiu\assets\vendors\ueditor\php
+
+里面有个config.json   修改里面的路径*/
+
+
+
+
+
+/*
+插件
+E:\PHP web\study\baixiu\assets\vendors
+有个nprogress   progress进度的意思
+这个就是用来实现进度条的
+有css和js两个文件
+已经加载所有页面的公共部分
+  <script>
+    NProgress.start();
+
+    NProgress.done();
+  </script>
+
+还有一种用法，用在ajax上
+比如用users的用户批量删除，profile的头像上传；都用到了ajax
+
+1.
+	xhr.send(data);
+
+// 用来控制请求的进度
+	
+NProgress.start();
+	
+
+xhr.onreadystatechange = function(){
+  
+		if(xhr.readyState == 4 && xhr.status == 200){
+    
+			// console.log(xhr.responseText);
+    
+			$('.preview').attr('src',xhr.responseText);
+
+    
+			NProgress.done();
+  
+		}
+
+	}
+
+
+2.
+$.ajax({
+  
+  
+	url:'/admin/users.php?action=deleteAll',
+  
+	type:'post',
+  
+	data:{ids:ids},//当做参数传给服务端
+  
+	beforeSend:function(){
+    
+		// 禁用按钮防止重复提交
+    
+		NProgress.start();
+  
+	},
+  
+	success:function(info){
+    
+		// console.log(info);
+
+    
+		alert(info.message);
+    
+		if(info.code == 10000){
+      
+			location.reload();
+      
+			NProgress.done();
+    
+		}
+  
+	}
+
+
+})
+
+*/
+
+
+
+
+/*
+post.php 修改操作，其中的所属分类部分解释
+当时在取数据的时候，包含posts表中所有的内容
+在做修改操作的时候，希望能够在修改页面也显示当前分类，也就是默认选中，加个selected
+
+所以在遍历的过程中，可以把所有分类的id都能取出，但是只有一个分类id和当前文章的id一致，它两个相等，就可以做选中，
+那么就做一个判断，如果
+文章的$rows[0]['category_id'] == 某一个分类的$val['id']
+那就加一个selected
+*/
+
+
+
+
+三表联查
+left join 左连接（就是左边这张表不动，以他为标准，右边和他去配对）	ps：其实还有右连接，交叉连接等
+join连接 联合几张表去查询
+
+
+
+
+
+仪表盘（其实就是我们理解的首页）
+dashboard
+
+
+truncate `options`
+清空表

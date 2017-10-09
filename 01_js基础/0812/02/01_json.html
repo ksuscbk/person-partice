@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>json</title>
+</head>
+<body>
+    <script>
+        // json javascript object notation 是对象的一个子集或者一部分
+        // instanceof 查看是否是某一个构造函数构造出来的
+        function Stuent (name ,age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        //instaceof 只跟构造函数名字
+        var s1 = new Stuent("焦强", 22);
+        console.log(s1.name);
+        console.log(s1);
+        console.log(s1 instanceof Stuent);
+        console.log(s1 instanceof Object);
+        console.log(s1 instanceof Array);
+    </script>
+</body>
+</html>

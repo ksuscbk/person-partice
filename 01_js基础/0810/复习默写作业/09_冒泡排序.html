@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>冒泡排序</title>
+</head>
+<body>
+    <script>
+        var arr = [12, 56, 23, 98, 76, 48, 51];
+        function sorter(arr) {
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            console.log(arr);
+            //如果写成return arr;  在外面查看时程序应写为 console.log(sorter(arr));
+        }
+        sorter(arr);
+    </script>
+</body>
+</html>

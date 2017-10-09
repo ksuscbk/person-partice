@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>小火箭返回顶部</title>
+    <style>
+        .div1 {
+            background-color: cornsilk;
+            text-align: center;
+            font-size: 18px;
+            line-height: 40px;
+            color: rgba(204, 51, 153, .7);
+        }
+        img {
+            width: 60px;
+            position: fixed;
+            right: 50px;
+            bottom: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+        状难写之景如在目前，含不尽之意见于言外 <br/> <br/>
+    </div>
+    <img src="../1.JPG" />
+
+    <script>
+        window.onload = function () {
+            var img = document.getElementsByTagName("img")[0];
+            if (scrollTop() > 600) {
+                img.style.display = "block";
+            }else {
+                img.style.display = "none";
+            }
+            window.onscroll = function () {
+                if (scrollTop() > 600) {
+                    img.style.display = "block";
+                }else {
+                    img.style.display = "none";
+                }
+            }
+            img.onclick = function () {
+//                window.scrollTo(0, 0);
+                var target = 0, leader = 0;
+                timer = setInterval(function () {
+                    leader = scrollTop();
+                    if (target === leader) {
+                        clearInterval(timer);
+                    }
+                    var step = (target - leader) / 10;
+                    window.scrollTo(0, leader + step);
+                }, 30)
+
+            }
+
+
+            function scrollTop () {
+                return window.pageYOffset || document.documentElement.scrollTop;
+            }
+        }
+    </script>
+</body>
+</html>

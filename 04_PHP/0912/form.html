@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单</title>
+</head>
+<body>
+	<form action="./form.php" method="post" enctype="mulipart/form-data">
+		<ul>
+			<li>
+				用户名<input type="text" name="username">
+			</li>
+			<li>
+				密码<input type="text" name="pwd">
+			</li>
+			<li>
+				<input type="submit" value="提交">
+			</li>
+	</ul>
+	</form>
+</body>
+<script>
+	// 亲爱的双重for循环
+	for (var i = 1; i < 10; i++) {
+		for (var j = 1; j <= i; j++) {
+			document.write(j + "*" + i + "=" + i*j + " ");
+		}
+		document.write("<br>");
+	}
+</script>
+</html>

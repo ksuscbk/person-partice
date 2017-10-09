@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .d-box {
+            width: 400px;
+            height: 300px;
+            border: 5px solid #eee;
+            box-shadow: 2px 2px 2px 2px #666;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+        }
+        .hd {
+            width: 100%;
+            height: 25px;
+            background-color: #7c9299;
+            border-bottom: 1px solid #369;
+            line-height: 25px;
+            color: white;
+            cursor: move;
+        }
+        #box_close {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<!--用来移动的盒子-->
+<div class="d-box" id="d_box">
+    <!--功能部分-->
+    <div class="hd" id="drop">
+        注册信息 (可以拖拽)
+        <span id="box_close">【关闭】</span>
+    </div>
+
+    <div class="bd"></div>
+</div>
+<script>
+    //需求1：鼠标按下，然后在移动让box跟随移动;
+    var box = document.getElementById("d_box");
+    var drop = document.getElementById("drop");
+    //两个事件嵌套绑定;(先触发按下事件在触发移动事件)
+    drop.onmousedown = function () {
+        var event = event || window.event;
+        // 获取鼠标按下时鼠标在盒子中的位置
+        var pagex = event.pageX || event.clientX + scrollLeft();
+        var pagey = event.pageY || event.clientY + scrollTop();
+        var boxx = box.offsetLeft;
+        var boxy = box.offsetTop;
+        var x = pagex - boxx;
+        var y = pagey - boxy;
+        document.onmousemove = function () {
+            var event = event || window.event;
+            var pagex = event.pageX || event.clientX + scrollLeft();
+            var pagey = event.pageY || event.clientY + scrollTop();
+            var boxx = pagex - x;
+            var boxy = pagey - y;
+            if (boxy < 0) {
+                boxy = 0;
+            }
+            box.style.left = boxx + "px";
+            box.style.top = boxy + "px";
+            //取消文字选中状态
+            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+        }
+    }
+    //需求2：鼠标弹起，然后移动事件解除;
+    drop.onmouseup = function () {
+        document.onmousemove = null;
+    }
+
+    function scrollLeft () {
+        return window.pageXOffset || document.documentElement.scrollLeft;
+    }
+    function scrollTop () {
+        return window.pageXOffset || document.documentElement.scrollTop;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/*重置样式*/
+ul,ol,li,a,h1,h2,h3,h4,h5,h6,body,div,dl,dt,dd,p,textarea,nav,main,input {
+    margin: 0;
+    padding: 0;
+    font-family: "airal, helvetica, sans-serif";
+}
+ul,ol,li,dl,dt,dd {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+
+}
+img {
+    /*解决图像自带3px问题*/
+    display: block;
+    border: none;
+}
+.clearfloat:after {
+    display: block;
+    clear: both;
+    content: ".";
+    height: 0;
+    visibility: hidden;
+}
+.clearfloat {
+    *zoom:1;
+}

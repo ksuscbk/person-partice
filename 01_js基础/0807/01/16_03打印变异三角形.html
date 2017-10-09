@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            letter-spacing: 5px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //打印一个五角星组成的变异三角形     直角在左上方
+        var j = 5;    //行
+        for(;j>0;j--){                     //j的值变化为 5   4    3  2 1
+            for(var i = 1; i<=j;i++){      //i分别小于  5   4   3   2   1
+                document.write("☆");
+            }
+            document.write("<br>");
+        }
+
+    </script>
+</body>
+</html>

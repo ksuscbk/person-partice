@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>缓动动画</title>
+    <style>
+        button {
+            width: 100px;
+            height: 40px;
+            background-color: darkorange;
+            font: 700 26px/40px "simsun";
+            color: darkgreen;
+        }
+        .div1 {
+            height: 400px;
+            background-color: #ccc;
+            position: relative;
+        }
+        .div2 {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            background-color: darkgoldenrod;
+            top: 160px;
+        }
+    </style>
+</head>
+<body>
+    <button>古昔</button>
+    <div class="div1">
+        <div class="div2">状难写之景如在目前</div>
+    </div>
+    <script>
+        var btn = document.getElementsByTagName("button")[0];
+        var div2 = document.getElementsByClassName("div2")[0];
+
+        btn.onclick = function () {
+            fn (div2, 800);
+        }
+
+        function fn (ele, target) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var step = (target - ele.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                ele.style.left = ele.offsetLeft + step + "px";
+                if (Math.abs(target - ele.offsetLeft) <= 1) {
+                    ele.style.left = target + "px";
+                    clearInterval(ele.timer);
+                }
+            }, 10);
+        }
+    </script>
+</body>
+</html>

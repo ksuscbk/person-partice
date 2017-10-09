@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var year = Number(prompt("请输入年份:"));
+        var month = Number(prompt("请输入月份:"));
+        var day = Number(prompt("请输入号:"));
+        alert("这一天是该年的第" + (day + runDays(year, month)) + "天");
+
+        //判断闰年的函数
+//        function run(n) {
+//            if (n % 4 === 0 && n % 100 === 0 || n % 400 === 0) {
+//                var bool = true;
+//            }else {
+//                var bool = false;
+//            }
+//            return bool;
+//        }
+        //计算该月之前所有月份的天数
+        function runDays(year, month) {
+                if (year % 4 === 0 && year % 100 === 0 || year % 400 === 0) {
+                    var arr1 = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                    var days = 0;
+                    for (var i = 0; i < month - 1; i++) {
+                        days += arr1[i];
+                    }
+                }else {
+                    var arr1 = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                    var days = 0;
+                    for (var i = 0; i < month - 1; i++) {
+                        days += arr1[i];
+                    }
+                }
+            return days;
+        }
+    </script>
+</body>
+</html>

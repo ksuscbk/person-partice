@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery中的ajax</title>
+	<style>
+		body {
+			background-color: orange;
+			text-align: center;
+		}
+		button {
+			width: 120px;
+			height: 40px;
+			font-size: 20px;
+
+		}
+		table {
+			width: 600px;
+			height: 400px;
+			margin: 30px auto;
+		}
+		tr {
+
+		}
+		td {
+			border: 3px solid #ccc;
+			width: 60px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<button>添加数据</button>
+	<table>
+		<thead>
+			<tr>
+				<td>星号</td>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>性别</td>
+				<td>作品</td>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	<script src="jquery.min.js"></script>
+	<script src="template-web.js"></script>
+	<script type="text/template" id="model1">
+		{{each lists as val k}}
+			<tr>
+				<td>{{k + 1}}</td>
+				<td>{{val.name}}</td>
+				<td>{{val.age}}</td>
+				<td>{{val.gender}}</td>
+				<td>{{val.ablum}}</td>
+			</tr>
+		{{/each}}
+	</script>
+	<script>
+		$("button").click(function () {
+			$.ajax({
+				url:"./data.php",
+				type:"post",
+				success: function (info) {
+					$("tbody").html(template("model1", {lists:info}));
+				}
+			});
+		});
+	</script>
+</body>
+</html>

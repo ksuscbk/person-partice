@@ -1,0 +1,33 @@
+ctrl+shift+z	已经做好的退回之后的下一步
+ctrl+g		查找行号
+ctrl+shift+up/down	上下移动代码
+ctrl+f		查找文本
+ctrl+R		文件内代码替换
+************************************************************************************
+console.log();  alert("");	typeof();	方法注释   /**回车
+console.log();	alert("");	typeof();
+console.log();	alert("");	typeof();
+console.log();	alert("");	typeof();
+console.log();	alert("");	typeof();
+console.log();	alert("");	
+console.log();	alert("");	
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();	alert("");
+console.log();  alert("");
+console.log();	alert("");

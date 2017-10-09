@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>按钮</button>
+	<script>
+		var btn = Document.getElementsByTagName("button")[0];
+		btn.addEventListener("click", function () {
+			var xhr = new XMLHttpRequest();
+			xhr.open("get","./");
+			xhr.send();
+			xhr.addEventListener("readystatechange", function () {
+				if (xhr.status == 200 && xhr.readyState == 4) {
+					
+				}
+			});
+		});
+	</script>
+</body>
+</html>

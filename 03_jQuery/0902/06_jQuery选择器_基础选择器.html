@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box">
+    div
+</div>
+<span>span1</span>
+<span class="abc">span2</span>
+<span>span3</span>
+<ul>
+    <li>asdadad</li>
+    <li>asdadad</li>
+    <li class="abc">asdadad</li>
+    <li>asdadad</li>
+    <p>呀阿萨德拉克</p>
+    <p>呀阿萨德拉克</p>
+    <p>呀阿萨德拉克</p>
+    <p>呀阿萨德拉克</p>
+</ul>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // id选择器
+        $("#box").css("backgroundColor", "aqua");
+
+        // calss选择器
+        $(".abc").css("backgroundColor", "purple");
+        // 标签选择器
+        $("p").css("fontsize", "50px");
+        // 并集选择器
+        $("#box, p, .abc").css("border", "2px solid hotpink");
+        // 交集选择器
+        $("li.abc").css("color", "deepskyblue");
+
+    </script>
+</body>
+</html>

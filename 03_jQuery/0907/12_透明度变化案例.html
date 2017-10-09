@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul {
+            list-style: none;
+        }
+        li {
+            float: left;
+            width: 180px;
+            height: 180px;
+            background-color: deeppink;
+            text-align: center;
+            line-height: 180px;
+            color: aqua;
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>含不尽之意见于言外</li>
+        <li>含不尽之意见于言外</li>
+        <li>含不尽之意见于言外</li>
+        <li>含不尽之意见于言外</li>
+        <li>含不尽之意见于言外</li>
+        <li>含不尽之意见于言外</li>
+        <li>含不尽之意见于言外</li>
+        <li>含不尽之意见于言外</li>
+        <li>含不尽之意见于言外</li>
+        <li>含不尽之意见于言外</li>
+    </ul>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $("ul li").each(function (i,v) {
+            console.log(i);
+            console.log(v);
+
+            $(v).css("opacity",.1*i)
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>按钮点击案例</title>
+    <style>
+        body {
+            text-align: center;
+            padding-top: 200px;
+        }
+        input {
+            width: 900px;
+            height: 200px;
+            background-color: silver;
+            color: deeppink;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="我是一个超大的按钮,我很丑"/>
+    <script>
+        window.onload = function () {
+            var inp = document.getElementsByTagName("input")[0];  //别忘了从数组中取出来
+            inp.onclick = function () {
+                alert("没错，我点了你");
+            }
+        }
+    </script>
+</body>
+</html>

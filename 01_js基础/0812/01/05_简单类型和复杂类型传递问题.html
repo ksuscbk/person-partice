@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>简单类型和复杂类型</title>
+</head>
+<body>
+    <script>
+        //简单类型也叫值类型  存储时变量中存储的是值  string number undefined boolean
+        //  在内存中存储时，存储在栈中
+        // 传递时 传递值
+        var a = 1;
+        var b = a ;
+        a = 2;
+        console.log(a);
+        console.log(b);
+
+
+        //引用类型 存储时存储的是地址 因此也叫引用类型   object   function
+        //在内存中存储时，存储在堆中
+        //传递时 传递地址
+        function student (name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        var stu1 = new student("焦强", 22);
+        var stu2 = stu1;
+        stu1.name = "帅龄斐";
+        console.log(stu1.name);
+        console.log(stu2.name);
+    </script>
+</body>
+</html>

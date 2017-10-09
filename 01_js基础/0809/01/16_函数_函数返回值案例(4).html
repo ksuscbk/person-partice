@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //1.求一组数中的最大值
+
+//        alert(getMax([2, 5, 9, 1]));
+//
+//        function getMax (arr) {
+//            var max = arr[arr.length-1];
+//            for (var i = 0;i < arr.length - 1; i++) {
+//                if (max < arr[i]) {
+//                    max = arr[i];
+//                }
+//            }
+//            return max;
+//        }
+        //2.求一组数中的最小值
+        //常规做法  和上面差不多
+//        alert(getMin([2, 5, 9, 1]));
+//        function getMin (arr) {
+//            var min = arr[arr.length - 1];    //照顾到数组只有一个元素时的写法
+//            for (var i = 0; i < arr.length - 1; i++) {
+//                if (min > arr[i]) {
+//                    min = arr[i];
+//                }
+//            }
+//            return min;
+//        }
+        //检验一下默写会不会用冒泡的做法
+//        alert(getMin([2, 5, 6, 3, 1]));
+//        function getMin(arr) {
+//            for (var i = 0;i < arr.length - 1; i++) {
+//                for (var j = 0;j < arr.length - 1; j++) {
+//                    if (arr[j] > arr[j + 1]) {
+//                        var temp = arr[j];
+//                        arr[j] = arr[j + 1];
+//                        arr[j + 1] = temp;
+//                    }
+//                }
+//            }
+//            return arr[0];
+//        }                 //不错不错  完成了
+        //3.求阶乘
+//        var n = Number(prompt("请输入你要求的阶乘的数字："));
+//        alert(n + "的阶乘为" + getProduct(n));
+        function getProduct(n) {
+            var product = 1;
+            for (var i = 1; i <= n;i++ ) {
+                product *= i;
+            }
+            return product;
+        }
+        //4.求1!+2!+3!+....+n!
+        var n = Number(prompt("请输入你要求的阶乘之和的最大的那个数字："));
+        alert(n + "以下的所有的阶乘之和为：" + sum(n));
+        function sum (n) {
+            var sum = 0;
+            for ( var i = 1; i <= n; i++){
+                sum += getProduct(i);        //注意调用阶乘函数的时候传的值是i
+            }
+            return sum;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>侧边栏二维码的显示与隐藏</title>
+    <style>
+        .fixed {
+            width: 50px;
+            height: 50px;
+            background: url(../images/bgs.png) no-repeat -159px -51px;
+            position: fixed;
+            right: 10px;
+            top: 40%;
+        }
+        .erweima {
+            position: absolute;
+            top: 0;
+            left: -150px;
+        }
+        .fixed a {
+            display: block;
+            width: 50px;
+            height: 50px;
+        }
+        .hidden {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="fixed" id="fixed">
+    <a href="#"></a>
+    <div class="erweima hidden" id="er">
+        <img src="../images/456.png" alt=""/>
+    </div>
+</div>
+    <script>
+        window.onload = function () {
+            var a = document.getElementsByTagName("a")[0];
+            var div = document.getElementById("er");
+            a.onmouseover = function () {
+                div.className = "erweima show";
+            }
+            a.onmouseout = function () {
+                div.className = "erweima hidden";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>switch语句</title>
+</head>
+<body>
+    <script>
+        //switch  用的很少
+        var str = prompt("请输入一个数字");
+        var num = Number(str);
+        switch (num) {
+            case (11):  //判断是否相等 ===  注意是冒号
+                alert(11);
+                break;  //跳出循环
+            case(22): {  // 注意是冒号
+                alert(22);
+                break;
+            }
+            case(33): {  // 注意是冒号
+                alert(33);
+                break;
+            }
+            default :
+                alert("不是11、22、33");
+      }
+    </script>
+</body>
+</html>

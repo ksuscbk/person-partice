@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>预解析</title>
+</head>
+<body>
+    <script>
+//        JavaScript代码的执行是由浏览器中的JavaScript解析器来执行的。
+//        JavaScript解析器执行JavaScript代码的时候，分为两个过程：预解析过程和代码执行过程
+
+        //预解析    变量声明提升比函数声明提升位置高（函数的权限比变量高）
+            // 1.查看语法错误
+            // 2.声明提升
+            // a、变量声明提升 在预解析的时候，变量名会提升到JS的最顶端，赋值还是在这个位置
+            console.log(str);
+            var str = 111;
+            // b、函数声明提升  在预解析的时候，函数进行了整体提升，到达JS最顶端
+                //函数范围内，也会出现变量声明提升
+
+
+    </script>
+</body>
+</html>

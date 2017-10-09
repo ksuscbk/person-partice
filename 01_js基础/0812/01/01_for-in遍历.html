@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>for-in遍历</title>
+</head>
+<body>
+    <script>
+        var obj = {};
+        for (var i = 0; i < 10; i++) {
+            obj[i] = i * 2;
+        }
+        console.log(obj);
+        for (var aaa in obj) {               //定义一个变量在obj对象中
+            console.log(aaa + " == " + obj[aaa]);
+        }
+    </script>
+</body>
+</html>

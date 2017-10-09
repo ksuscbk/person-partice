@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>事件委托</title>
+</head>
+<style>
+    li {
+        font: 500 22px/35px "simsun";
+        background-color: skyblue;
+    }
+</style>
+<body>
+    <button>创建li标签</button>
+    <ul>
+        <li>原生土著li</li>
+        <span>蠢蠢的span</span>
+        <li>原生土著li</li>
+        <span>纯纯的span</span>
+        <li>原生土著li</li>
+    </ul>
+    <script>
+        var ul = document.getElementsByTagName("ul")[0];
+        var btn = document.getElementsByTagName("button")[0];
+        var liArr = document.getElementsByTagName("li");
+        btn.addEventListener("click", function () {
+            var newLi = document.createElement("li");
+            newLi.innerHTML = "我是新创建出来的纯纯的li";
+            ul.appendChild(newLi);
+            newLi.style.backgroundColor = "pink";
+        });
+
+        for (var i = 0; i < liArr.length; i++) {
+            liArr[i].addEventListener("click", function (event) {
+                alert("我是li被点击了");
+            })
+        }
+
+        //事件委托：把某类元素上的逻辑，通过冒泡机制绑定给他的父元素，然后通过判断执行逻辑;
+        //让新创建的元素，也有老事件;(不在管是不是老元素，而是管是不是这个元素)；
+
+        ul.addEventListener("click", function (event) {
+            var event = event || window.event;
+            var ele = event.target?event.target:event.srcElement;
+
+            if (ele.tagName === "LI") {
+                alert("li标签被点击了");
+            }
+        });
+    </script>
+</body>
+</html>

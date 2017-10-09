@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //判断一个数是否为素数
+        zhiShu();
+        function zhiShu(){
+            var str = "";
+            var n = 0; //质数个数
+            for(var i = 2; i <= 100; i++){
+                var bool = true; //质数
+                for(var j = 2; j < i; j++){   //j从2开始到i-1，如果i能被j整除，跳出循环
+                    if(i % j == 0){
+                        bool = false;
+                        break;
+                    }
+                }
+                if(bool == true){   //如果bool没变，证明i不能被从2到i-1的任何数整除，即为质数
+                    str += i + "，";
+                    n++; //质数个数+1
+                }
+            }
+            document.write("1-100间的质数总数为：" + n + "个");
+            document.write("<br>");
+            document.write("1-100间的质数分别为：" + str.substr(0,str.length-1));
+        }
+    </script>
+</body>
+</html>

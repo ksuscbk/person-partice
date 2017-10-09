@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <style>
+        .box1 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid skyblue;
+            background-color: #000;
+        }
+        .box2 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid pink;
+            background-color: silver;
+            margin: 100px auto ;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box1">
+    <div class="box2"></div>
+</div>
+
+    <script>
+        window.onload = function () {
+            //事件流通常用于面试
+                //1.事件绑定容易出现层叠，所以有了时间监听，兼容性不好，可以自己做封装
+                //2.事件对象event兼容性不好，里面有很多属性和方法都是平常要用的
+                //3.时间传播阶段   1捕获  2目标  3冒泡   eventPhase查看处于哪个阶段
+                    //冒泡很少用 一般都是取消冒泡（取消冒泡和捕获是一个方法）
+                    //事件委托的时候用          捕获几乎没用过
+        }
+
+
+    </script>
+</body>
+</html>

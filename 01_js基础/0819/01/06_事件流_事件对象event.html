@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+</head>
+<body>
+    <script>
+        //事件触发的时候，产生的对象   浏览器支持方式不一样
+        document.onclick = function () {
+            console.log(event);
+        }
+        // 谷歌写参数也行     写event也行
+        // 火狐写参数         不识别event
+        // IE678不识别参数    只识别event
+        // IE11 参数       event都识别
+
+        //  推荐
+        document.onclick = function (event) {
+            var event = event || window.event;
+            console.log(event);
+        }
+    </script>
+</body>
+</html>

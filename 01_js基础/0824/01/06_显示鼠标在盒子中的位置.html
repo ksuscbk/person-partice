@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box {
+            display: block;
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            text-align: center;
+            line-height: 100px;
+            margin: 100px;
+            cursor: pointer;
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.getElementsByTagName("div")[0];
+            box.onmousemove = function () {
+                var event = event || window.event;
+                // 鼠标在页面中的位置
+                var pagex = event.pageX || event.clientX + scrollLeft();
+                var pagey = event.pageY || event.clientY + scrollTop();
+                // 盒子在页面中的位置
+                var boxx = box.offsetLeft;
+                var boxy = box.offsetTop;
+                // 鼠标在盒子中的位置
+                var x = pagex - boxx;
+                var y = pagey - boxy;
+                box.innerHTML = "鼠标在盒子中的X坐标为：" + x + "px;<br>鼠标在盒子中的Y坐标为：" + y + "px;<br>";
+            }
+        }
+
+
+
+
+        function scrollLeft () {
+            return window.pageXOffset || document.documentElement.scrollLeft;
+        }
+        function scrollTop () {
+            return window.pageYOffset || document.documentElement.scrollTop;
+        }
+    </script>
+</head>
+<body>
+
+<div class="box"></div>
+
+
+</body>
+</html>

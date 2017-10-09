@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul i {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <button>
+        添加节点
+    </button>
+    <ul>
+        <li>原生节点</li>
+        <li id="li2"> 我是原生节点li2</li>
+        <li>原生节点3</li>
+    </ul>
+    <i>我是一个i标签</i>
+    <script>
+        window.onload = function () {
+            var but = document.getElementsByTagName("button")[0];
+            var ul = document.getElementsByTagName("ul")[0];
+            but.onclick = function () {
+                var newLi = document.createElement("li");
+                newLi.innerHTML = "添加到最末尾";
+                //第1种  把节点A以子节点的形式添加到父元素的最末尾
+//                ul.appendChild(newLi);
+                //第2种  把节点A以子节点的形式到B的后面  父节点.insertBefore(A,B); A B都是父节点的子节点
+                var li2 = document.querySelector("#li2");
+
+                ul.insertBefore(newLi, li2);
+
+            }
+        }
+
+
+    </script>
+</body>
+</html>

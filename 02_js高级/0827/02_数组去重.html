@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var arr = [1, 2, 3, 4, 2, 3, 3];
+        // 思路 把arr里的每一项往新数组里扔，如果没有就添加进去
+        Array.prototype.norepeat = function () {
+            var newArr = [];
+            for (var i = 0; i < this.length; i++) {
+                var bool = true;
+                for (var j = 0; j < newArr.length; j++) {
+                    if (newArr[j] === arr[i]) {
+                        bool = false;
+                        break;      // 进一步优化
+                    }
+                }
+                if (bool) {
+                    newArr[newArr.length] = this[i];
+                }
+            }
+            return newArr;
+        }
+        console.log(arr.norepeat());
+
+
+
+    </script>
+</body>
+</html>

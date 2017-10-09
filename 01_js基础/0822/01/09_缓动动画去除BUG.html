@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>缓动动画体验</title>
+    <style>
+        button {
+            width: 120px;
+            height: 40px;
+            font: 400 22px/24px "simsun";
+            margin: 20px auto;
+            display: block;
+        }
+        .box1 {
+            height: 300px;
+            background-color: silver;
+            padding-top: 100px;
+            position: relative;
+        }
+        .box2 {
+            position: absolute;
+            left: 0;
+            top: 100px;
+            background-color: hotpink;
+            width: 100px;
+            height: 100px;
+
+        }
+    </style>
+</head>
+<body>
+    <button>到北京</button>
+    <button>到上海</button>
+    <div class="box1">
+        <div class="box2">
+            状难写之景如在目前，含不尽之意见于言外
+        </div>
+    </div>
+
+    <script>
+        var btn = document.getElementsByTagName("button");
+        var div = document.getElementsByClassName("box2")[0];
+
+        btn[0].onclick = function () {
+            fn(div, 200);
+        }
+        btn[1].onclick = function () {
+            fn(div, 800);
+        }
+
+        function fn (element, target) {
+            clearInterval(element.timer);
+            element.timer = setInterval(function () {
+                var step = (target - element.offsetLeft)/10;
+                if (step > 0) {
+                    step = Math.ceil(step);
+                }
+                if (step < 0) {
+                    step = Math.floor(step);
+                }
+
+                element.style.left = element.offsetLeft + step + "px";
+                if (Math.abs(target - element.offsetLeft) <= Math.abs(step)) {
+                    element.style.left = target + "px";
+                }
+            }, 12);
+
+        }
+    </script>
+</body>
+</html>

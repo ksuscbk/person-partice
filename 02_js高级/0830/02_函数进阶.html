@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        // 函数的声明
+//        function fn (num) {
+//            console.log(num);
+//        }
+//        fn(3);
+        // 函数的表达式
+//        var fn = function (num) {
+//            console.log(num);
+//        }
+//        fn(3);
+        // 函数的构造函数声明
+        var fn = new Function("num1","num2","num3","return console.log(num1 + num2 + num3)");
+        fn(1, 2, 3);
+
+        // 函数声明和函数表达式的区别   预解析  有名字
+
+        // js里面没有块级作用域（只针对ECMASCRIPT5）
+//        严格模式下不允许在块语句中声明函数
+
+    </script>
+</body>
+</html>

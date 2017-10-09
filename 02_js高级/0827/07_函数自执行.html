@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>函数自执行</title>
+</head>
+<body>
+    <script>
+        // 函数的立即执行表达式，是一个闭包的形式
+        // 创建一个私有的命名空间，避免全局污染
+        // 最简单的模块化方式
+        // 可以保护这个模块内部的变量和函数
+        (function () {
+            var a = 123;
+            function asd() {
+                alert("七夕快乐");
+            }
+            // 把内部的函数或者变量要暴露出去，就把这个方法挂载到window上，使其成为window的一个属性
+            window.asd = asd;
+        })();
+        asd();
+    </script>
+ </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1></h1>
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        // open 方法  打开一个连接   需要至少两个参数  请求方式类似method    请求地址类似action
+        xhr.open('get','./01demo.php');
+
+        // setRequestHeader 方法  设置请求头信息   两个参数  请求头的key  请求头的value
+        // 可以连续设置多个，，重复调用即可
+        xhr.setRequestHeader('Content-Type','text/html');
+        // xhr.setRequestHeader('Content-Length','6');
+
+        // send方法，将请求发出去      可以不传参数
+        xhr.send();
+
+
+        // 处理服务端做出的响应需要一段时间，如果后面还有代码。会造成阻塞
+        //  为了提高执行效率，通过事件监听来对响应结果进行处理。
+
+        // xhr.responseText 接收到的是响应主体
+        xhr.addEventListener('readystatechange',function () {
+            console.log(1);
+            if(xhr.readyState == 4) {
+                document.getElementsByTagName("h1")[0].innerHTML = xhr.responseText;
+            }
+        });
+
+        // XMLHttpRequest 将请求和响应整个过程分成了五个步骤
+        // 每个步骤代表一种状态
+        // 0  UNSENT    open尚未调用
+        // 1  OPENED    open已调用 ······
+
+
+        document.write("如果前面代码以异步方式执行，我的执行时间不受影响");
+    </script>
+</body>
+</html>

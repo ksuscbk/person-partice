@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>显示隐藏案例</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: silver;
+        }
+        input {
+            /*background-color: aqua;*/
+            display: block;
+            margin: 30px auto;
+            width: 100px;
+            height: 40px;
+            font-size: 22px;
+            color: crimson;
+        }
+        .hidden {
+            display: none;
+        }
+        .oooo {
+            display: inline-block;
+            border: 10px solid rgba(204, 102, 204, .4);
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="隐藏"/>
+    <img class="oooo" src="../images/love.JPG" />
+
+    <script>
+        window.onload = function () {
+            var inp = document.getElementsByTagName("input")[0];
+            var img = document.getElementsByClassName("oooo")[0];
+            inp.onclick = function () {
+                if (inp.value === "隐藏" ) {
+                    inp.value = "显示";
+                    img.className = "hidden";
+                }else {
+                    inp.value = "隐藏";
+                    img.className = "oooo";
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>

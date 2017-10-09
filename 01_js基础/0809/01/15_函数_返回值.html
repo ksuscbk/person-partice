@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //返回值 内部的变量外部无法使用（访问）；需要返回值来让外部使用
+        num(234, 567);
+        function num (aaa,bbb){
+            var sum = aaa + bbb;
+            alert (sum);
+        }
+//        如果函数没有显示的使用 return语句 ，那么函数有默认的返回值：undefined
+//        如果函数使用 return语句，那么跟再return后面的值，就成了函数的返回值
+//        如果函数使用 return语句，但是return后面没有任何值，那么函数的返回值也是：undefined
+//        函数使用return语句后，这个函数会在执行完 return 语句之后停止并立即退出，也就是说return后面的所有其他代码都不会再执行。
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>不熟练的数组案例</title>
+</head>
+<body>
+    <script>
+        //1.将一个数组输出为|分割的形式，比如“刘备|张飞|关羽”。
+        /*var arr = ["赵云", "焦强", "叶斌"];
+        console.log(arr.join("|")); */     //转换为字符串输出了
+        //3.工资的数组[1500, 1200, 2000, 2100, 1800],把工资不超过2000的删除
+//        var money = [2001, 1999, 3999, 15000, 555];
+        /*console.log(money.filter(function (element, index, array) {
+            if (element > 2000) {
+                return true;
+            }
+        }));*/
+        /*for (var i = 0; i < money.length; i++) {
+            if (money[i] > 2000) {
+                console.log(money[i]);
+            }
+        }*/
+
+        //5.编写一个方法去掉一个数组的重复元素
+        var arr = ["a", "a", "a", "a", "a", "b"];
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            var bool = true;
+            for (var j = 0; j < newArr.length; j++) {
+                if (newArr[j] === arr[i]) {
+                    bool = false;
+                }
+            }
+            if (bool) {
+                newArr[newArr.length] = newArr + arr[i];
+            }
+        }
+        console.log(newArr);
+    </script>
+</body>
+</html>

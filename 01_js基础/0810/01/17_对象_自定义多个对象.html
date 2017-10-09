@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>多个对象的创建</title>
+</head>
+<body>
+    <script>
+        //1. for循环
+        //2. 用函数封装
+        function createPerson (name,age) {
+            var person = new Object();
+            person.name = name;
+            person.age = age;
+            person.study = function () {
+                alert(person.name + "说：扶我起来，我还能敲");
+            }
+            return person;
+        }
+        var person1 = createPerson("焦强",22);
+        var person2 = createPerson("帅龄斐",22);
+        console.log(person1);
+        console.log(person2);
+
+        person1.study();
+    </script>
+</body>
+</html>

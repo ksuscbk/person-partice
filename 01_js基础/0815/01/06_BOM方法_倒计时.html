@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>找工作倒计时</title>
+    <style>
+        body {
+            background-color: silver;
+            text-align: center;
+            perspective: 100px;
+        }
+        div {
+            margin: 300px;
+            font-size: 30px;
+            color: deeppink;
+            transition: all 10s;
+            cursor: pointer;
+        }
+        div:hover {
+            color: aqua;
+            cursor: move;
+            transform: scale(1.4) rotate(36000deg);
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        var timer = setInterval(function () {
+            var now = new Date().getTime();
+            var future = new Date("2017/11/1 12:00:00").getTime();
+            var sjc = future - now;
+
+            var day = parseInt(sjc/1000/60/60/24);
+            var hour = parseInt(sjc/1000/60/60%24);
+            var minute = parseInt(sjc/1000/60%60);
+            var second = parseInt(sjc/1000%60);
+            var ms = parseInt(sjc%1000);
+
+            day = day < 10 ? "0" + day : day;
+            hour = hour < 10 ? "0" +hour : hour;
+            minute = minute < 10 ? "0" + minute : minute;
+            second = second < 10 ? "0" + second : second;
+
+            if (ms < 10) {
+                ms = "00" + ms;
+            }else if (ms < 100) {
+                ms = "0" + ms;
+            }
+
+            if (sjc < 0) {
+                clearInterval(timer);
+            }
+            document.getElementsByTagName("div")[0].innerText = "距离找工作还有" + day + "天" + hour + "小时" + minute + "分钟" + second + "秒" + ms + "毫秒";
+        },1);        //""引号中的内容被浏览器当做程序来对待
+
+
+
+
+        
+    </script>
+</body>
+</html>

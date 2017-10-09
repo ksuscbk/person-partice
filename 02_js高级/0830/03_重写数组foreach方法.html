@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        /*var arr = ["hi", "hello", "qwe", "123", "asdas"];
+        Array.prototype.forEach = function (ggg) {
+            for (var i = 0; i < this.length; i++) {
+                ggg(i, this[i]);
+            }
+        }
+
+        arr.forEach(function(v, i) {
+            console.log(i + ":" + v);
+        });*/
+
+        function fn() {
+            var a = 15;
+            return function () {
+//                var a = 15;
+                console.log(++a);
+            }
+        }
+
+        fn()();
+        fn()();
+        fn()();
+
+
+        /*var a = fn();
+        a();
+        a();*/
+
+    </script>
+</body>
+</html>

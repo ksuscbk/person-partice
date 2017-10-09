@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li {
+            list-style: none;
+            font: 400 22px/40px "simsun";
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>我是第1个li元素</li>
+        <li>我是第2个li元素</li>
+        <li>我是第3个li元素</li>
+        <li>我是第4个li元素</li>
+        <li>我是第5个li元素</li>
+        <li>我是第6个li元素</li>
+        <li>我是第7个li元素</li>
+        <li>我是第8个li元素</li>
+    </ul>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $("li").mouseenter(function () {
+            $(this).css("backgroundColor", "deeppink");
+        });
+        $("li").mouseout(function () {
+            $(this).css("backgroundColor", "#fff");
+        });
+    </script>
+</body>
+</html>

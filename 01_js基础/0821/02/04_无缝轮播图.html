@@ -1,0 +1,225 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .all ol li.current {
+            background: yellow;
+        }
+        #arr {
+            display: none;
+        }
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById("all");
+            var screen = document.getElementById("screen");
+            var imgWidth = screen.offsetWidth;
+            var ul = document.getElementById("ul");
+            var ulLiArr = ul.children;
+            var ol = document.getElementById("ol");
+            var arr = document.getElementById("arr");
+            var left = document.getElementById("left");
+            var right = document.getElementById("right");
+
+            for (var i = 0; i < ulLiArr.length; i++) {
+                var li = document.createElement("li");
+                li.innerHTML = i + 1;
+                ol.appendChild(li);
+            }
+            var olLiArr = ol.children;
+            olLiArr[0].className = "current";
+
+
+            var newLi = ulLiArr[0].cloneNode(true);
+            ul.appendChild(newLi);
+
+
+            for (var i = 0; i < olLiArr.length; i++) {
+                olLiArr[i].index = i;
+                olLiArr[i].onmouseover = function () {
+                    for (var j = 0; j < olLiArr.length; j++) {
+                        olLiArr[j].className = "";
+                    }
+                    this.className = "current";
+                    var distance = -imgWidth * this.index;
+                    animate(ul, distance);
+                    key = this.index;
+                    square = this.index;
+                }
+            }
+
+            var key = 0;
+            var square = 0;
+            right.onclick = autoPlay;
+
+            left.onclick = function () {
+                key--;
+                square--;
+                if (square === -1) {
+                    square = olLiArr.length - 1;
+                }
+                if (key === -1) {
+                    ul.style.left = -(ulLiArr.length - 1) * imgWidth + "px";
+                    key = ulLiArr.length - 2;
+                }
+                for (var j = 0; j < olLiArr.length; j++) {
+                    olLiArr[j].className = "";
+                }
+                olLiArr[square].className = "current";
+                var distance = -imgWidth * key;
+                animate(ul, distance);
+            }
+
+            var timer = setInterval(autoPlay, 1500);
+            box.onmouseenter = function () {
+                arr.style.display = "block";
+                clearInterval(timer);
+            }
+            box.onmouseleave = function () {
+                arr.style.display = "none";
+                timer = setInterval(autoPlay,1500);
+            }
+
+        //右侧按钮逻辑
+            function autoPlay() {
+                key++;
+                square++;
+                if(square === olLiArr.length){
+                    square = 0;
+                }
+                if(key === ulLiArr.length){
+                    ul.style.left = 0;
+                    key = 1;
+                }
+                for(var j=0;j<olLiArr.length;j++){
+                    olLiArr[j].className = "";
+                }
+                olLiArr[square].className = "current";
+                var sss = -imgWidth*key;
+                animate(ul,sss);
+            }
+        }
+
+
+        //匀速动画封装(1.让那个元素移动;  2.移动到哪里)
+        function animate(ele,target) {
+            //使用定时器之前，清除定时器；保证一个盒子一个定时器；多出触动事件也必须只有一个定时器;
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                //BUG1: 目标位置如果在前面步长为正数，在后面步长为负数;
+                var step = target>ele.offsetLeft?10:-10;
+                //赋值(走过了，可以在退回来)
+                ele.style.left = ele.offsetLeft + step + "px";
+                //判断：到达目标位置就清除定时器；
+                if(Math.abs(target-ele.offsetLeft) <= Math.abs(step)){
+                    ele.style.left = target+"px";
+                    clearInterval(ele.timer);
+                }
+            },20);
+        }
+    </script>
+</head>
+
+<body>
+
+<!--外部盒子-->
+<div class="all" id='all'>
+    <!--内部盒子-->
+    <div class="screen" id="screen">
+        <!--图片们-->
+        <ul id="ul">
+            <li><img src="../images/1.jpg" width="540" height="300"/></li>
+            <li><img src="../images/2.jpg" width="540" height="300"/></li>
+            <li><img src="../images/3.jpg" width="540" height="300"/></li>
+            <li><img src="../images/4.jpg" width="540" height="300"/></li>
+            <li><img src="../images/5.jpg" width="540" height="300"/></li>
+        </ul>
+        <!--小方块-->
+        <ol id="ol">
+
+        </ol>
+        <!--小三角-->
+        <div id="arr">
+            <span id="left"><</span>
+            <span id="right">></span>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+

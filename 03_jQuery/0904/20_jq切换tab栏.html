@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;
+        }
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button class="active">显示1</button>
+    <button>显示2</button>
+    <button>显示3</button>
+    <div style="display: block">盒子1</div>
+    <div>盒子2</div>
+    <div>盒子3</div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $("button").click(function () {
+            $(this).addClass("active").siblings().removeClass("active");
+            $("div").eq($(this).index()).show().siblings("div").hide()
+        });
+    </script>
+</body>
+</html>

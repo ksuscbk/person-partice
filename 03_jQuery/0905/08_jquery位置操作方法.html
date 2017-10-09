@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            /*border: 5px solid #000;*/
+            background-color: pink;
+            padding: 20px;
+            margin: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // offset()  直接获取相对于document的位置  返回json对象
+//        console.log($("#box").offset());
+
+        // position()  获取相对于有定位的父级元素的位置   不包含自身margin   offsetLeft offstTop包含，margin
+        // 只读属性  不能设置
+        console.log($("#box").position());
+
+    </script>
+</body>
+</html>

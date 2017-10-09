@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box,#box2 {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 100px;
+
+            background-color: red;
+        }
+        #box2 {
+            background-color: blue;
+            position: absolute;
+            top: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        //  动画队列与停止动画
+        // stop()  两个参数  1 是否清除动画队列  2 是否跳转到最终效果   默认都是false
+        $("#box").animate({width:500},1000).animate({height:300},1000);
+        $("#box2").click(function () {
+//            $("#box").stop(false,true);
+            // 清除整个动画队列，到达所有动画的最终效果
+            $("#box").finish();
+        });
+    </script>
+</body>
+</html>

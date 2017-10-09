@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>动画封装</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        button {
+            width: 80px;
+            height: 40px;
+            font: 400 20px/25px "simsun";
+            background-color: deepskyblue;
+            text-align: center;
+        }
+        .box1 {
+            height: 300px;
+            background-color: silver;
+        }
+        .box2 {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<body>
+    <button>走你</button>
+    <div class="box1">
+        <div class="box2">
+            千金散尽还复来
+        </div>
+    </div>
+    <script>
+        // 定时器 + 动画原理 + 赋值和获取值
+        var btn = document.getElementsByTagName("button")[0];
+        var div2 = document.getElementsByTagName("div")[1];
+        btn.onclick = function () {
+            setInterval(function () {
+                div2.style.left = div2.offsetLeft + 10 + "px";
+            },30)
+
+
+        }
+    </script>
+</body>
+</html>

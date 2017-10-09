@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>client</title>
+</head>
+<body>
+    <script>
+       // 封装
+        function getStyle (ele, attr) {
+            if (window.getComputedStyle != undefined) {
+                return window.getComputedStyle(ele, null)[attr];
+            }else {
+                return ele.currentStyle[attr];
+            }
+        }
+
+    </script>
+</body>
+</html>

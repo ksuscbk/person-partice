@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>微博发布删除功能</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        div {
+            width: 600px;
+            padding: 10px;
+            border: 1px dotted #ccc;
+            margin: 100px auto;
+        }
+        textarea {
+            width: 460px;
+            height: 234px;
+            resize: none;
+            font-size: 22px;
+        }
+        label {
+            font-size: 22px;
+        }
+        button {
+            width: 60px;
+            height: 30px;
+            font-size: 18px;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            padding: 10px 70px;
+        }
+        li {
+            font: 500 20px/28px "simsun";
+            border-bottom: 1px dashed #ccc;
+        }
+        li a {
+            float: right;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box">
+    <label for="txt">请输入</label>
+    <textarea id="txt" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <ul>
+
+    </ul>
+</div>
+<script>
+    window.onload = function () {
+
+        var btn = document.getElementsByTagName("button")[0];
+        var txt = document.getElementsByTagName("textarea")[0];
+        var ul = document.getElementsByTagName("ul")[0];
+
+        btn.onclick = function () {
+            if (txt.value === "" || txt.value.trim().length === 0) {
+                alert("留言不能为空");
+                return;
+            }
+            var li = document.createElement("li");
+            li.innerHTML = txt.value + "<a href='#'>删除</a>";
+            ul.insertBefore(li, ul.children[0]);
+            txt.value = "";
+
+            var a = li.getElementsByTagName("a")[0];
+            a.onclick = function () {
+//                a.parentNode.parentNode.removeChild(li);
+//                a.parentNode.remove();
+                ul.removeChild(li);
+            }
+
+        }
+    }
+
+</script>
+</body>
+</html>

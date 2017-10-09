@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size: 36px;
+            font-family: "宋体";
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //这次来个直角在右上的
+        for(var j=10;j>0;j--) {    //定义十行
+            for(var i=1;i<=10;i++) {
+                if(i<j) {
+                    document.write("&nbsp;");
+                }else {
+                    document.write("ぷ");
+                }
+            }
+            document.write("<br>")   //每一行末尾输出换行
+        }
+    </script>
+</body>
+</html>

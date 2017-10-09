@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //1.截取字符串"我爱中华人民共和国"，中的"中华"
+        /*var str = "我爱中华人民共和国";
+        console.log(str.slice(2,4));*/
+        //2."abcoefoxyozzopp"查找字符串中所有o出现的位置
+        /*var str = "abcoefoxyozzopp";
+            //思路:查找到o的时候输出索引值
+        for (var i = 0; i < str.length; i++) {
+            if (str.charAt(i) === "o") {      //查找数组第一项到最后一项，查找到o就输出索引值
+                console.log(i);
+            }
+        }*/
+        //3."abcoefoxyozzopp"o替换成i
+        var str = "abcoefoxyozzopp";
+
+//        console.log(str.replace(/o/g,"i"));  用正则表达式和replace方法替换
+
+        /*do {
+            var index = str.indexOf("o");        //给字符查索引   只要能查到字符o，index就大于-1
+            if (index > -1) {
+                str = str.replace("o", "i");
+            }
+        }while(index >= 0)
+        console.log(str);*/
+
+//        for (var i = 0; i < str.length; i++) {
+//            if (str.indexOf("o") > -1) {
+//                str = str.replace("o","i");
+//            }
+//        }
+//        console.log(str);
+
+        //4.把字符串中的所有空白去掉'   abc       xyz  a    123   '
+        var str = "   abc       xyz  a    123   ";
+
+        /*str = str.replace(/\s/g,"");           //正则表达式   只能看不能吃
+        console.log(str);*/
+
+        //先用split转换为数组，再用join转换为string
+        /*str = str.split(" ");     //切割方式为" "；空格
+        console.log(str);
+        str = str.join("");       //无缝连接转换为字符串
+        console.log(str);*/
+
+        //5.统计各个字符串出现的次数；'abcoefoxyozzopp'
+        //思路：创建一个json，遍历整个字符串，往json里面放；
+        //放入的时候进行判断:如果没有          添加一个属性对应的值为1；
+        //放入的时候进行判断:如果有，把该属性值+1；
+        /*var str = "ababababaccccddabcd";
+        var json = {};
+        for (var i = 0; i < str.length; i++) {
+            var a = str.charAt(i);            //a是为了给json绑定属性   灵活的那种方式
+            if (json[a] !== undefined) {
+                json[a] = json[a] + 1;
+            }else {
+                json[a] = 1;
+            }
+        }
+        console.log(json);*/
+        //6.获取url中?后面的内容，并转化成对象的形式。
+        var str = "http://www.itheima.com/login?name=zs&age=18&a=1&b=2";
+        var index = str.lastIndexOf("?");
+        str = str.slice(index + 1);
+        var arr = str.split("&");
+
+        var json = {};
+        for (var i = 0; i < arr.length; i++) {
+            var newArr = arr[i].split("=");
+            json[newArr[0]] = newArr[1];
+        }
+        console.log(json);
+    </script>
+</body>
+</html>

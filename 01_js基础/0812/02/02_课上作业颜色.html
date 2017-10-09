@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
+        function getColor () {    //在函数运算后得到一个随机生成的颜色
+            var randomColor = "#";   //先来个#
+            for (var i = 0; i < 6; i++) {   //#后面需要6个随机生成的数字
+                var a = parseInt(Math.random() * 16);  //数组索引值取值范围为0-15
+                randomColor += arr[a];                 //得到索引值对应的的数组元素
+            }
+            return randomColor;
+        }
+        document.body.bgColor = getColor();          //绑定给body背景色
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // $本质上是个函数，接受传参
+        // $（function） 意味着当文档树加载完毕，触发一件事情
+        $(function () {})   // DOMcontentLoaded
+        // 如果参数是字符串，就会判断到底是什么方式获取元素
+        // 会智能判断获取方式  #  .
+        console.log($("#box"));       // 把页面上的元素获取到包到$函数里面去
+//        $("#box").text("呵呵哈哈偶买噶");
+//        $("#box").html("<strong>呵呵哈哈偶买噶</strong>");
+
+        //  jQuery == $
+        jQuery("#box").html("<strong>呵呵哈哈偶买噶</strong>");
+    </script>
+</body>
+</html>

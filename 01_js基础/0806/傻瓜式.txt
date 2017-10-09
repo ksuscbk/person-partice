@@ -1,0 +1,49 @@
+一.变量
+1.下面四个变量声明语句中，哪一个变量的命名是正确的？B
+A．var for   B．var txt_name   C．var myname myval    D．var 2s
+2.下面哪一个语句定义了一个名为Myval的变量并将它的值赋为2205？    C
+A．var myval=2205         B．var MyVal=2205    C．var Myval=2205         D．Myval=2205
+3.+-*/%;计算;
+4.变量交换;
+<script>
+    var a = 100;
+    var b = 200;
+    a = a + b; //a+b的值赋给a
+    b = a - b; //a-b等于原来的a赋给b
+    a = a - b; //a-b等于原来的b赋给a
+</script>
+
+二.运算符和优先级
+
+（123+45*78）/(34+543)-9*(324-34) 先括号，再乘除，后加减
+
+今天星期六，1000天以后星期几
+<script>
+    var today = 6;
+    var num = 1000%7;//num=6
+    var week = 6 + num -7;
+    alert("今天星期六，1000天以后星期"+ week);
+</script>
+
+//明天讲
+
+
+20个鸡蛋一盒，55个多少盒
+<script>
+    var ege = 55;
+    var egebox = Math.ceil(ege/20);
+    alert("20个鸡蛋一盒，55个鸡蛋"+egebox+"盒");
+</script>
+
+var a = 1; 
+var b = ++a + ++a; 
+console.log(b);    //5
+var a = 1; 
+var b = a++ + ++a; 
+console.log(b);    //4
+var a = 1; 
+var b = a++ + a++; 
+console.log(b);    //3
+var a = 1; 
+var b = ++a + a++; 
+console.log(b);    //4

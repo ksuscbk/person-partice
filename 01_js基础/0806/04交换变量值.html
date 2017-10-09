@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>交换变量值</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //需求：交换两个变量的值
+        //
+//        var a = 1;
+//        var b = 2;
+//        var temp;
+//        temp = a;
+//        a = b;
+//        b = temp;
+//        console.log(a);
+//        console.log(b);
+        //思路：不使用临时变量，用两个数的和减去其中一个
+        var a = 1;
+        var b = 2;
+//        var sum = a + b;
+//        a = sum - a;
+//        b = sum - b;
+//        console.log(a);
+//        console.log(b);
+        a = a + b;//a b 的和赋给a
+        b = a - b;//a-b等于原来的a赋给b
+        a = a - b;//a-b等于原来的b赋给a
+        console.log(a);
+        console.log(b);
+//        console.log(a+b-a);
+//        console.log(a+b-b);
+
+
+        //第二遍
+        console.log("第二遍,此时a=2,b=1");
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        console.log(a);
+        console.log(b);
+
+        //第三遍
+        console.log("第三遍,此时a=1,b=2");
+        var a = 1, b = 2 ;
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        console.log(a);
+        console.log(b);
+    </script>
+</body>
+</html>

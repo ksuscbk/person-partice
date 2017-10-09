@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {
+            border: 1px solid #ccc;
+            position: fixed;
+            right: 50px;
+            bottom: 100px;
+            width: 80px;
+        }
+        .box {
+            margin: 100px auto;
+            font-size: 28px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+        齐天大圣孙悟空，定海神针美猴王······<br> <br>
+    </div>
+
+    <img src="../1.JPG" alt=""/>
+    <script>
+        window.onload = function () {
+
+            var img = document.getElementsByTagName("img")[0];
+            if (scrollTop() > 800) {
+                show(img);
+            }else {
+                hide(img);
+            }
+            window.onscroll = function () {
+             // 怕暖页面顶端被遮盖的部分是否大于800   大于显示   小于隐藏
+                 if (scrollTop() > 800) {
+                    show(img);
+                 }else {
+                    hide(img);
+                 }
+             }
+
+            // window.scrollTo(x,y);
+            var target = 0, leader = 0, timer = null;
+            img.onclick = function () {
+//                window.scrollTo(0,0);  新事件
+                timer = setInterval(function () {
+                    leader = scrollTop();
+                    if (target === leader) {
+                        clearInterval(timer);
+                    }
+                    var step = (target - leader) / 10; //往上走step就是负的  不用判断了
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+//                    leader = leader + step;
+                    window.scrollTo(0,leader + step);
+
+                },30);
+            }
+
+
+            //封装
+            function scrollTop () {
+                return window.pageYOffset || document.documentElement.scrollTop;
+            }
+
+            function hide (element) {
+                element.style.display = "none";
+            }
+            function show (element) {
+                element.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

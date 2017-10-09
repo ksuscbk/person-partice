@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        function User (name, age, sex, phone) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.phone = phone;
+            this.move = function () {
+                alert("请让我移动到页面顶部");
+            }
+        }
+        var user1 = new User("焦强", 22, "男", 15110489459);
+        var user2 = new User("乔海珍", 40, "女", 13403486879);
+        var user3 = new User("焦建国", 44, "男", 15903485049);
+        console.log(user1);
+        console.log(user2.sex);
+        console.log(user3.phone);
+        user1.move();
+    </script>
+</body>
+</html>

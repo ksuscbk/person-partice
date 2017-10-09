@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //1.求10-20之间随机数
+        console.log(Math.random() * 10 + 10);
+        //2.随机生成颜色
+        function color () {
+            var red = parseInt(Math.random() * 255);
+            var blue = parseInt(Math.random() * 255);
+            var green = parseInt(Math.random() * 255);
+            var str = "rgb("+ red +","+ green +","+ blue +")";
+            return str;
+        }
+        alert(color());
+        //3.模拟实现max/min
+        function MyMax () {
+            var max = arguments[0];
+            for (var i = 1; i < arguments.length; i ++) {
+                if (max < arguments[i]) {
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+        console.log(MyMax(1, 5, 2, 8));
+        // 最小值
+        function MyMin () {
+            var min = arguments[0];
+            for (var i = 1; i < arguments.length; i ++) {
+                if (min > arguments[i]) {
+                    min = arguments[i];
+                }
+            }
+            return min;
+        }
+        console.log(MyMin(1, 5, 2, 8));
+    </script>
+</body>
+</html>

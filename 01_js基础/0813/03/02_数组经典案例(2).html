@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //3.工资的数组[1500, 1200, 2000, 2100, 1800],把工资超过2000的删除
+        /*var arr = [1500, 1200, 2000, 2100, 1800];
+        console.log(arr.filter(function (element, index, array) {
+            if (element < 2000) {
+                return true;
+            }
+        }));*/
+        //5.编写一个方法去掉一个数组的重复元素
+        var aaa = ["s", "s", "s", "s", "s", "s", "j"];
+        var newArr = [];
+        for (var i = 0; i < aaa.length; i++) {
+            var bool = true;
+            for (var j = 0; j < newArr.length; j++) {
+                if (newArr[j] === aaa[i]) {
+                    bool = false;
+                }
+            }
+            if (bool) {
+                newArr[newArr.length] = aaa[i];
+            }
+        }
+        console.log(newArr);
+    </script>
+</body>
+</html>

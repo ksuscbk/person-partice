@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        // 字符串的内置trim方法会在连接其他字符串时做到无缝连接  此处自定义的不行，会有小空隙
+        String.prototype.trim = function () {
+            return this.replace(/^\s+|\x+$/g,"");
+        }
+        var str = "      ddddddddd       ";
+//        document.write(str.trim());
+//        document.write("<br>");
+        document.write(str.trim()+"aaaaa");
+        document.write("<br>");
+        document.write("aaa"+"bbb");
+    </script>
+</body>
+</html>

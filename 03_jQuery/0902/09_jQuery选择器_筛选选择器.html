@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="box">
+        <span>span1</span>
+        <span class="abc">span2</span>
+        <span>span3</span>
+            <div>
+                <span>
+                    qqqqqqqqqqqqqqqqq
+                </span>
+            </div>
+        <ul>
+            <li id="abc">asdadad</li>
+            <li>asdadad</li>
+            <li class="abc">asdadad</li>
+            <li>asdadad</li>
+            <p>呀阿萨德拉克</p>
+            <p>呀阿萨德拉克</p>
+            <p>呀阿萨德拉克</p>
+            <p>呀阿萨德拉克</p>
+        </ul>
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // 筛选选择器
+        // children()  相当于子类选择器   ul>li
+//        $("#box").children().css("border","2px solid skyblue");
+//        $("#box").children("span").css("border","2px solid skyblue");
+
+
+        // find()    相当于后代选择器    ul li
+//        $("#box").find("span").css("border","2px solid skyblue");
+
+        // siblings()  其他兄弟们
+//        $("#abc").siblings("p").css("backgroundColor", "silver");
+
+        // parent()
+        $("#abc").parent().css("border", "5px solid silver");
+
+        // parents(); 该元素所有父级  一直到html为止  可选参数
+//        $("#box span:eq(2)") === $("#box span").eq(2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>黄金span</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body {
+            background-color: #999;
+        }
+        .div1 {
+            width: 800px;
+            height: 40px;
+            margin: 100px auto;
+            position: relative;
+            background-color: silver;
+            border-radius: 20px;
+        }
+        ul {
+            position: absolute;
+            z-index: 1;
+        }
+        ul li {
+            float: left;
+            width: 100px;
+            line-height: 40px;
+            text-align: center;
+            color: hotpink;
+        }
+        span {
+            position: absolute;
+            width: 100px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <span></span>
+        <ul>
+            <li>定海神针</li>
+            <li>定海神针</li>
+            <li>定海神针</li>
+            <li>定海神针</li>
+            <li>定海神针</li>
+            <li>定海神针</li>
+            <li>定海神针</li>
+            <li>定海神针</li>
+        </ul>
+    </div>
+    <script>
+        var div1 = document.getElementsByClassName("div1")[0];
+        var span = document.getElementsByTagName("span")[0];
+        var liArr = document.getElementsByTagName("li");
+        var moveWidth = span.offsetWidth;
+        var count = 0;
+        //鼠标移动span跟着移动
+        for (var i = 0; i < liArr.length; i++) {
+            liArr[i].index = i;
+            liArr[i].onmouseenter = function () {
+                fn(span, moveWidth * this.index);
+            }
+            liArr[i].onclick = function () {
+                count = this.index;
+            }
+        }
+
+        div1.onmouseleave = function () {
+            fn(span, moveWidth * count)
+        }
+
+        function fn (ele, target) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var step = (target - ele.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                ele.style.left = ele.offsetLeft + step + "px";
+                if (Math.abs(target - ele.offsetLeft) <= Math.abs(step)) {
+                    ele.style.left = target + "px";
+                    clearInterval(ele.timer);
+                }
+            }, 30);
+        }
+    </script>
+</body>
+</html>

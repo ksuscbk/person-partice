@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //2.回调函数：函数作为参数进行传递和调用
+        //回调函数一般用于定义一种规则；
+
+        //演示1
+        //    a(b);//b把地址赋值demo，然后demo执行了，b同样的内存空间中；
+        //
+        //    function a(demo){//demo一定是回调函数，以为下面demo后面带括号；
+        //        demo();
+        //    }
+        //    function b(){
+        //        alert("b方法被执行了！");
+        //    }
+
+
+        //演示2
+        //    a(111,222,getSum);//把111和222按照getSum这个回调函数，进行调用
+        //
+        //
+        //    function a(n1,n2,demo){
+        //        var num = demo(n1,n2);//demo说怎么算，就怎么算；这就是回调函数定义的规则；
+        //        alert(num);
+        //    }
+        //
+        //    function getSum(num1,num2){
+        //        var aaa = num1+num2;
+        //        return aaa;
+        //    }
+
+        //演示3
+        //回调函数，是定义一种规则；
+
+        a(10, 5, test1);//不带括号是整个函数，带括号就是执行函数了
+        a(10, 5, test2);
+        a(10, 5, test3);
+        a(10, 5, test4);
+
+
+        function a(n1, n2, demo) {
+            var num = demo(n1, n2);
+            document.write(num);
+            document.write("<br />")
+        }
+
+
+        //四个测试函数；(四则运算),这四个方法只能做回调函数，但是无法调用回调函数；
+        function test1(num1, num2) {
+            return num1 + num2;
+        }
+        function test2(num1, num2) {
+            return num1 - num2;
+        }
+        function test3(num1, num2) {
+            return num1 * num2;
+        }
+        function test4(num1, num2) {
+            return num1 / num2;
+        }
+
+    </script>
+</body>
+</html>

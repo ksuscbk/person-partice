@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input {
+            width: 500px;
+            height: 50px;
+            border: 1px solid deeppink;
+            font-size: 30px;
+            color: darkred;
+            display: block;
+            margin: 100px auto;
+            outline-style: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text"/>
+    <script>
+        window.onload = function () {
+            var inp = document.getElementsByTagName("input")[0];
+            inp.onfocus = function () {
+                inp.style.border = "2px solid deeppink";
+                inp.style.backgroundColor = "pink";
+            }
+            inp.onblur = function () {
+                inp.style.border = "1px solid deeppink";
+                inp.style.backgroundColor = "white";
+            }
+        }
+    </script>
+</body>
+</html>

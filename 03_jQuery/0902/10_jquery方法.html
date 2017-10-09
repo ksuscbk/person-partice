@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="box">
+        <span>span1</span>
+        <span class="abc">span2</span>
+        <span>span3</span>
+        <ul>
+            <li id="abc">asdadad</li>
+            <li>asdadad</li>
+            <li class="abc">asdadad</li>
+            <li>asdadad</li>
+        </ul>
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $("#box span:eq(1)").next().css("backgroundColor", "hotpink");
+        $("#box span:eq(1)").prev().css("backgroundColor", "deepskyblue");
+
+
+//        first()
+//        last()
+//          js里面的单击事件
+        $('#box').click(function () {
+
+        });
+    </script>
+</body>
+</html>

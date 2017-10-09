@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img {
+            height: 400px;
+        }
+        ul, ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul {
+            position: relative;
+        }
+        #box {
+            height: 400px;
+            width: 700px;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        ul li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        #nav {
+            position: absolute;
+            bottom: 20px;
+            left: 350px;
+        }
+        #nav li{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: orange;
+            margin-right: 10px;
+            float: left;
+            left: 20px;
+            text-align: center;
+        }
+        ol#nav li.active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li style="display: block"><a href="#"><img src="images/1.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/2.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/3.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/4.jpg" alt=""/></a></li>
+        </ul>
+        <ol id="nav">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+<script src="jquery-1.12.4.min.js"></script>
+<script>
+    var timer = null;
+    var num = 0;
+    // 点亮小圆点  ol  li    让ul里的图片跟随ol里的li动
+    $("#nav li").mouseenter(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+        $("#box>ul>li").eq($(this).index()).fadeIn().siblings().fadeOut();
+        num = $(this).index();
+    });
+    // 让页面跑起来
+    timer = setInterval(autoPlay, 1500);
+    //鼠标进入取消定时器
+    $("#box").mouseenter(function () {
+        clearInterval(timer);
+    });
+    $("#box").mouseleave(function () {
+        timer = setInterval(autoPlay, 1500);
+    });
+    function autoPlay() {
+        num++;
+        if (num == $("#nav li").length) {
+            num = 0;
+        }
+        $("#nav li").eq(num).addClass("active").siblings().removeClass("active");
+        $("#box>ul>li").eq(num).fadeIn().siblings().fadeOut();
+    }
+</script>
+</body>
+</html>

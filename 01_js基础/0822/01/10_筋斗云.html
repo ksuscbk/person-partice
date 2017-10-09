@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>缓动动画体验</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body {
+            background-color: #999;
+        }
+        .box {
+            width: 800px;
+            height: 42px;
+            background-color: silver;
+            margin: 100px auto;
+            border-radius: 10px;
+            position: relative;
+        }
+        ul {
+            position: relative;
+            z-index: 1;
+            background-color: #ccc;
+        }
+        ul li {
+            width: 100px;
+            height: 42px;
+            line-height: 42px;
+            text-align: center;
+            float: left;
+        }
+        span {
+            position: absolute;
+            /*top: 0;*/
+            left: 0;
+            width: 100px;
+            height: 42px;
+            background-color: gold;
+            position: absolute;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>齐天大圣</li>
+            <li>齐天大圣</li>
+            <li>齐天大圣</li>
+            <li>齐天大圣</li>
+            <li>齐天大圣</li>
+            <li>齐天大圣</li>
+            <li>齐天大圣</li>
+            <li>齐天大圣</li>
+        </ul>
+        <span></span>
+    </div>
+
+    <script>
+        var box = document.getElementsByTagName("div")[0];
+        var liArr = document.getElementsByTagName("li");
+        var span = document.getElementsByTagName("span")[0];
+        var moveWidth = span.offsetWidth;
+        var count = 0;
+        for (var i = 0; i < liArr.length; i++) {
+            liArr[i].index = i;
+            liArr[i].onmouseenter = function () {
+                var distance = this.index * moveWidth;
+                fn(span,distance);
+            }
+            liArr[i].onclick = function () {
+                count = this.index;
+            }
+        }
+        box.onmouseleave = function () {
+            fn(span, count * moveWidth);
+        }
+
+
+
+
+
+
+        function fn (element, distance) {
+            clearInterval(element.timer);
+            element.timer = setInterval(function () {
+                var step = (distance - element.offsetLeft)/10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                element.style.left = element.offsetLeft + step + 'px';
+                if (Math.abs(distance - element.offsetLeft) <= 1) {
+                    element.style.left = distance + "px";
+                    clearInterval(element.timer);
+                }
+            }, 10);
+        }
+    </script>
+</body>
+</html>

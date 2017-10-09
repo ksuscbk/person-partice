@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>面向过程切换案例</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        input {
+            width: 80px;
+            height: 30px;
+            font-size: 20px;
+        }
+        div {
+            width: 250px;
+            height: 200px;
+            border: 1px solid black;
+            display: none;
+            text-align: center;
+            line-height: 200px;
+            font-size: 30px;
+            margin: 40px auto;
+        }
+        .active {
+            background-color: gold;
+        }
+
+    </style>
+</head>
+<body>
+    <input type="button" value="按钮1" class="active">
+    <input type="button" value="按钮2">
+    <input type="button" value="按钮3">
+    <div style="display:block">内容1</div>
+    <div>内容2</div>
+    <div>内容3</div>
+
+    <script>
+        var inpArr = document.getElementsByTagName("input");
+        var divArr = document.getElementsByTagName("div");
+
+        for (var i = 0; i < inpArr.length; i++) {
+            inpArr[i].index = i;
+            inpArr[i].onclick = function () {
+                for (var j = 0; j < inpArr.length; j++) {
+                    inpArr[j].className = "";
+                    divArr[j].style.display = "none";
+                }
+                this.className = "active";
+                divArr[this.index].style.display = "block";
+            }
+
+        }
+    </script>
+</body>
+</html>

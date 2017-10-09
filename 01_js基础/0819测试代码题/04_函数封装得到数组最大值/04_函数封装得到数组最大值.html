@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>函数封装得到数组最大值</title>
+</head>
+<body>
+    <script>
+        var arr = [1, 9, 3, 7, 5];
+        getMax(arr);
+        function getMax (arr) {
+            var max = arr[0];
+            for (var i = 1; i < arr.length; i++) {   //因为max已经是数组第一项了，所以直接从数组第二项开始比
+                if (max < arr[i]) {
+                    max = arr[i];
+                }
+            }
+            console.log(max);
+        }
+
+    </script>
+</body>
+</html>

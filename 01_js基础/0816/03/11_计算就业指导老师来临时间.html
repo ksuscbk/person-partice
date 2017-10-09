@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>就业指导</title>
+    <style>
+        body {
+            background-color: silver;
+            text-align: center;
+            perspective: 1000px;
+        }
+        div {
+            margin: 300px auto;
+            font-size: 30px;
+            color: deeppink;
+            transition: all 5s;
+            cursor: pointer;
+        }
+        div:hover {
+            color: aqua;
+            cursor: move;
+            transform: scale(1.2) rotateZ(1800deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var ttt = setInterval(function () {
+            var now = new Date().getTime();
+            var future = new Date("2017/11/1 12:00:00").getTime();
+            var timer = future - now;
+
+            var days = parseInt(timer/1000/60/60/24);
+            var hours = parseInt(timer/1000/60/60%24);
+            var minutes = parseInt(timer/1000/60%60);
+            var seconds = parseInt(timer/1000%60);
+            var ms = parseInt(timer%1000);
+
+            days = days < 10 ? "0" + days : days;
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            if (ms < 10) {
+                ms = "00" + ms;
+            }
+            if (ms < 100) {
+                ms = "0" + ms;
+            }
+
+            document.getElementsByTagName("div")[0].innerText = "就业指导老师还有" + days + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒" + ms + "毫秒抵达战场！！！";
+        },1);
+
+    </script>
+</body>
+</html>
+

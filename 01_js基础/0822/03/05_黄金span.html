@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>黄金span</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #999;
+        }
+        div {
+            position: relative;
+            margin: 100px auto;
+            width: 800px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #ccc;
+            border-radius: 20px;
+
+        }
+        ul {
+            /*margin: 100px auto;*/
+            list-style: none;
+            z-index: 1;
+            position: absolute;
+        }
+        ul li {
+            width: 100px;
+            height: 40px;
+            float: left;
+            text-align: center;
+            z-index: 100;
+        }
+        span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span></span>
+        <ul>
+            <li>今夕何夕</li>
+            <li>今夕何夕</li>
+            <li>今夕何夕</li>
+            <li>今夕何夕</li>
+            <li>今夕何夕</li>
+            <li>今夕何夕</li>
+            <li>今夕何夕</li>
+            <li>今夕何夕</li>
+        </ul>
+    </div>
+    <script>
+        var ul = document.getElementsByTagName("ul")[0];
+        var div = document.getElementsByTagName("div")[0];
+        var liArr = document.getElementsByTagName("li");
+        var span = document.getElementsByTagName("span")[0];
+        var moveWidth = span.offsetWidth;
+        var count = 0;
+        for (var i = 0; i < liArr.length; i++) {
+            liArr[i].index = i;
+            liArr[i].onmouseenter = function () {
+                var target = moveWidth * this.index;
+                fn (span, target);
+            }
+            liArr[i].onclick = function () {
+                count = this.index;
+            }
+        }
+        div.onmouseleave = function () {
+            fn(span, count * moveWidth);
+        }
+
+
+        function fn (ele, target) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var step = (target - ele.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                ele.style.left = ele.offsetLeft + step + "px";
+                if (Math.abs(target - ele.offsetLeft) <= Math.abs(step)) {
+                    ele.style.left = target + "px";
+                    clearInterval(ele.timer);
+                }
+            }, 10)
+        }
+    </script>
+</body>
+</html>

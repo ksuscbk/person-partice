@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+//        参数
+//        1  json格式的对象， 里面可以放多个想要改变的属性  width : 500
+//        2  时间
+//        3  运动形式    swing（默认） 慢快慢            linear匀速     可以引第三方插件 多种动画运动形式
+        $("#box1").animate({
+            width:600,
+            height:600,
+            left:500,
+            top:300,
+            opacity:1
+        },5000)
+        $("#box2").animate({
+            width:600,
+            height:600,
+            left:500,
+            top:300,
+            opacity:1
+        },5000,"linear")
+    </script>
+</body>
+</html>

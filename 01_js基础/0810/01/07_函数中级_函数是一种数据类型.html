@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //匿名函数：  没有名字的函数
+//        只用逻辑不用名字的时候,用匿名函数
+        //事件注册   定时器···
+        document.onclick = function n() {
+            alert(1);
+        }
+        setInterval(function () {
+            console.log(222);
+        },1000);
+
+        //函数的自调用  定义的时候直接调用
+        (function () {
+            alert(123);
+        })();
+    </script>
+</body>
+</html>

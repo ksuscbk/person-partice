@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+   <html>
+   <head lang="en">
+       <meta charset="UTF-8">
+       <title></title>
+       <style>
+           div {
+               width: 123px;
+               height: 234px;
+               background-color: deeppink;
+           }
+       </style>
+   </head>
+   <body>
+   <div>伊人独立青莲下</div>
+   <script>
+       // 调用者  body/html 整个网页被遮挡住的左侧或上面的部分
+       // window   document,body            不能是html
+        window.onscroll = function () {
+            // 兼容性不好
+                // 谷歌只识别 document.body.scrollTop/Left;
+                // ie678只识别 document.documentElement.scrollTop/Left;
+                // 正常浏览器只看有没有DTD。没有支持body    有支持documentElement
+                // w3c window.pageYoffset / pageXoffset      不区分dtd约束
+
+            // 兼容写法
+            function scrollTop () {
+                var aaa = window.pageYOffset || document.documentElement.scrollTop;
+                return aaa;
+            }
+            function scrollTop () {
+                return window.pageXOffset || document.documentElement.scrollLeft;
+            }
+        }
+    </script>
+</body>
+</html>

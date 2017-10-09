@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.right {
+			color: green;
+		}
+		.false {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<ul>
+			<li>用户名：<input type="text" id="name"></li><span class="right"></span>
+			<li>密　码：<input type="password" id="pass"></li>
+			<li><input type="submit" value="注册"></li>
+		</ul>
+	</form>
+	<script>
+		var username = document.getElementById("name");
+		var span = document.getElementsByTagName("span")[0];
+		// 用户名输入框失去焦点时验证用户名是否可用
+		username.addEventListener("blur",function () {
+			var xhr = new XMLHttpRequest();
+			// 巧妙得把用户输入的内容写入请求头信息中
+			xhr.open('open','./check.php?name=' + username.value);
+			xhr.send();
+			xhr.addEventListener('readystatechange',function () {
+				if (xhr.status == 200 & xhr.readyState == 4) {
+					if (xhr.responseText == "用户名已存在") {
+						span.className = "false";
+					} else {
+						span.className = "right";
+					}
+					span.innerHTML = xhr.responseText;
+				}
+			});
+			
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 兼容获取事件对象
+    document.onclick = function (event) {
+        var event = window.event || event;
+        console.log(event);
+        console.log(event.pageY);      //光标相对于网页的竖直位置   ie678无
+                                        // pageY = clientY + scrollTop;
+        // return event.pageY || event.clientY + scrollTop();
+        console.log(event.screenY);    // 屏幕
+
+        console.log(event.clientY);     //可视区域
+
+
+
+    }
+</script>
+</body>
+</html>

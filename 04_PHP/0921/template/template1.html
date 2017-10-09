@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>template</title>
+</head>
+<body>
+	<button>按钮</button>
+	<script id="tpl1" type="text/template">
+		<p>我叫<span>xxx</span>,今年<span>xx</span>岁了，我在<span>xxx</span>学习前端。</p>
+	</script>
+	<script id="tpl2" type="text/template">
+		<ul>
+			<li>姓名：<% name %></li>
+			<li>年龄：<% age %></li>
+			<li>school：<% school %></li>
+		</ul>
+	</script>
+	<script>
+		var btn = document.getElementsByTagName("button")[0];
+		btn.addEventListener("click", function () {
+			var xhr = new XMLHttpRequest;
+			xhr.open('get','./data.php');
+			xhr.send();
+			xhr.addEventListener("readystatechange", function () {
+				if (xhr.status == 200 & xhr.readyState == 4) {
+					var data = JSON.parse(xhr.responseText);
+					// console.log(data);
+					// 正则表示式（） 代表匹配单元，会将匹配结果拆分成若干部分
+					var content = 
+
+
+
+				}
+			});
+		});
+
+		function template (dpl, data) {
+			var reg = /<%\s+([a-z0-9]+)\s+%>/;
+			var match;
+			var str = 
+
+		}
+		</script>
+</body>
+</html>

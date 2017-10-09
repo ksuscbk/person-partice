@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            text-align: center;
+        }
+        div {
+            width: 700px;
+            height: 500px;
+            background-color: deeppink;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <button>fadeIn()</button>
+    <button>fadeOut()</button>
+    <button>fadeToggle()</button>
+    <div id="box">
+
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $("button:eq(0)").click(function () {
+            $("#box").fadeIn(2000);
+        });
+        $("button:eq(1)").click(function () {
+            $("#box").fadeOut("fast");
+        });
+        $("button:eq(2)").click(function () {
+            $("#box").fadeToggle("slow");
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>123456</div>
+    <script>
+        window.onload = function () {
+            //style属性操作
+            //style属性值为object
+            //只能获取行内式 设置的也是在行内
+            //获取不到返回空字符串
+            //驼峰命名
+            //style.cssText
+            var div = document.getElementsByTagName("div")[0];
+            div.style.width = "100px";
+            div.style.backgroundColor = "red";
+            div.style.height = "100px";
+
+        }
+    </script>
+</body>
+</html>

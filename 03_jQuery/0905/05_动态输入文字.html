@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: silver;
+        }
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        @-webkit-keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        @-moz-keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        .wrap {
+            width: 1000px;
+            text-align: center;
+            margin: 100px auto 0;
+        }
+
+        .wrap h1 {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 300;
+            color: hotpink;
+        }
+
+        .word {
+            font-weight: 500;
+            color: greenyellow;
+        }
+
+        #typed-cursor {
+            opacity: 1;
+            -webkit-animation: blink .7s infinite;
+            -moz-animation: blink .7s infinite;
+            animation: blink .7s infinite;
+            display: none;
+            color: greenyellow;
+        }
+
+        .saySection {
+            margin-top: 50px;
+        }
+
+        .saySection input {
+            font-size: 30px;
+        }
+
+        .saySection .txtSay {
+            padding-left: 10px;
+            color: greenyellow;
+        }
+
+        .saySection .btnSay {
+            display: inline-block;
+            padding: 0 20px;
+            cursor: pointer;
+            color: rgba(0, 0, 0, .5);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>
+            You want to say ： <span class="word"></span><span id="typed-cursor" >|</span>
+        </h1>
+
+        <div class="saySection">
+            <input type="text" id="inValue" class="txtSay">
+            <input type="button" value="Say" id="btnSay" class="btnSay">
+        </div>
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // 动态输入文字  调用定时器
+        var timer = null;
+        var str = "我能想到最浪漫的事";
+        core(str);
+        function core (str) {
+            var n = 0;
+            var newStr = "";
+            timer = setInterval(function () {
+                if (n < str.length) {
+                    $("#typed-cursor").show();
+                    newStr += str[n];
+                    $(".word").text(newStr);
+                }
+                n++;
+                if (n >= str.length) {
+                    clearInterval(timer);
+                    $("#typed-cursor").hide();
+                }
+            }, 300);
+        }
+        // 把文本框中的文字在上面一个一个打出来  单击按钮之后
+        $("#btnSay").click(function () {
+            var str = $("#inValue").val();
+            core(str);
+            $("#inValue").val("");
+        });
+
+    </script>
+</body>
+</html>

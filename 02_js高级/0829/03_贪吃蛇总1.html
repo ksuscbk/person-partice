@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>贪吃蛇</title>
+    <link rel="stylesheet" href="snakeall.css"/>
+</head>
+<body>
+    <div id="map"></div>
+    <script src = "index1.js"></script>
+    <script>
+        var map = document.getElementById("map");
+        timer = setInterval(function () {
+            var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
+            var randomColor = "#";
+            for (var i = 0; i < 6; i++) {
+                var index = parseInt(Math.random() * 16);
+                randomColor += arr[index];
+            }
+            document.body.bgColor = randomColor;
+            map.style.backgroundColor = randomColor;
+        }, 5000);
+        var game = new Game(map);
+        game.start();
+    </script>
+</body>
+</html>

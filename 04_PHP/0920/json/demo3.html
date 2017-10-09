@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用 json 来处理数据</title>
+	<style>
+		table {
+			width: 600px;
+			border-collapse: collapse;
+			border: 1px solid #CCC;
+		}
+
+		td {
+			height: 30px;
+			border: 1px solid #CCC;
+		}
+	</style>
+</head>
+<body>
+	<button>获取</button>
+	<table>
+		<thead>
+			<tr>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>性别</td>
+				<td>专辑</td>
+			</tr>
+		</thead>
+		<tbody>
+		
+		</tbody>
+	</table>
+	<script>
+		var btn = document.getElementsByTagName("button")[0];
+		var tbody = document.getElementsByTagName("tbody")[0];
+		btn.onclick = function () {
+			var xhr = new XMLHttpRequest;
+			xhr.open("get","./demo1.php");
+			xhr.send();
+			xhr.onreadystatechange = function () {
+				if (xhr.status == 200 & xhr.readyState == 4) {
+					var str = "";
+					var person = JSON.parse(xhr.responseText);
+					for (var i = 0; i < person.length; i++) {
+						str += "<tr><td>" + person[i].name + "</td><td>" + person[i].age + "</td><td>" + person[i].gender + "</td><td>" + person[i].ablum + "</td></tr>";
+					}
+					tbody.innerHTML = str;
+				}
+			}
+		}
+		
+	</script>
+</body>
+</html>

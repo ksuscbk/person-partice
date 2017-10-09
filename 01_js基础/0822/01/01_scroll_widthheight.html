@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 123px;
+            height: 234px;
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+<div>伊人独立青莲下</div>
+    <script>
+        var div = document.getElementsByTagName("div")[0];
+        console.log(div.scrollWidth);         // 几乎不用  ie678兼容不好  width+padding
+        console.log(div.scrollHeight);        //ie678兼容不好  width+padding
+                // ie678 以内容为准
+                // height内容少以盒子为准   内容多以内容为准
+    </script>
+</body>
+</html>

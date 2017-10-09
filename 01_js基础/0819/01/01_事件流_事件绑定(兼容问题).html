@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+</head>
+<body>
+    <script>
+        //事件流    和事件有关的一大堆东西
+        //事件监听，兼容问题
+        // 模拟项目组多人开发
+//            1.同一事件源的同一事件,事件的层叠性   引出事件监听DOM2  addEventListener(事件名，函数);
+            //A 开发
+        document.onclick = function () {
+            console.log("朝辞白帝彩云间");
+            console.log("千里江陵一日还");
+        }
+            //B 补上的功能
+        document.onclick = function () {
+            console.log("两岸猿声啼不住");
+            console.log("轻舟已过万重山");
+        }
+
+
+
+
+        //A 开发   引出事件监听DOM2  addEventListener(事件名，函数);
+        document.onclick = function () {
+            console.log("朝辞白帝彩云间");
+            console.log("千里江陵一日还");
+        }
+        //B 事件监听
+        document.addEventListener("click", function () {
+            console.log("两岸猿声啼不住");
+            console.log("轻舟已过万重山");
+        });
+        //如果做原生js开发的话,建议都用事件监听做，butIE678不支持     IE678支持attachEvent("onclick", function(){函数体})
+        //注意绑定的函数名不一样      but        attachEvent是后绑定的先执行
+    </script>
+</body>
+</html>

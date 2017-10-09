@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+</head>
+<body>
+    <script>
+        //事件监听，兼容   封装
+        //思路 浏览器支持就调用这个方法，不支持这个方法，就换另一种方法
+
+        //封装 ：
+        // a 参数 ： 1.事件  2.事件源 3事件驱动程序
+        // b 返回值  需要，需要的是功能
+        function addEvent (element, event, fn) {
+            //思路 浏览器支持就调用这个方法，不支持这个方法，就换另一种方法
+                //element.addEventListener 如果存在，打印函数体   如果不存在，undefined
+            if (element.addEventListener && typeof element.addEventListener === "function") {
+                element.addEventListener(event, fn);
+            }else if(element.attachEvent){ //DOM2
+                element.attachEvent("on" + event, fn);
+            }else {  //DOM0
+                element["on" + event] = fn;
+            }
+        }
+
+        //测试
+        addEvent(document, "click", demo1);
+        addEvent(document, "click", demo2);
+        addEvent(document, "click", demo3);
+        function demo1 () {
+            console.log(1);
+        }
+        function demo2 () {
+            console.log(2213);
+        }
+        function demo3 () {
+            console.log(4334);
+        }
+    </script>
+</body>
+</html>

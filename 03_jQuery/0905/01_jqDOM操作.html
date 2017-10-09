@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="box"></div>
+    <span>审判沙盘</span>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        // jq中创建元素
+            // 1. $("<span>");       $("<span>哈哈哈哈</span>")
+//        $("body").append($("<div>"));
+            // 2. $(<span>hahahaha</span>);
+//        $("body").append($("<span>哈哈哈哈</span>"));
+            // 3. html()直接写入
+//        $("body").html("jsadksahkjsah");
+    //  如果获取的是页面中本来就有的元素，会类似于剪切的效果
+        var ospan = $("span");
+        $("#box").append(ospan);
+    </script>
+</body>
+</html>

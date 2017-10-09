@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //大于
+        function myMax () {
+            var mx = arguments[0];
+            for (var i = 1; i < arguments.length; i++) {
+                if (mx < arguments[i]) {
+                    mx = arguments[i];
+                }
+            }
+            return mx;
+        }
+        document.write(myMax(1, 4, 6, 2, 8));
+    </script>
+</body>
+</html>

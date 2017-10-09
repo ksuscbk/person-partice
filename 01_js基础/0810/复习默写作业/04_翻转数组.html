@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>翻转数组</title>
+</head>
+<body>
+    <script>
+        var arr = [1, 6, 3, 2, 4, 5];
+        function fanZhuan (arr) {
+//            for (var j = 0; j < Math.ceil(arr.length / 2); j++) {
+                for (var i = 0; i < Math.ceil(arr.length / 2); i++) {   //除号写成取余找了半小时BUG也是没谁了
+                    var temp = arr[i];
+                    arr[i] = arr[arr.length - 1 - i];
+                    arr[arr.length - 1 - i] = temp;
+                }
+//            }
+            console.log(arr);
+        }
+        fanZhuan(arr);
+    </script>
+</body>
+</html>

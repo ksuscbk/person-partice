@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+</head>
+<body>
+    <script>
+        //事件触发的时候，产生的对象 有属性和方法
+
+        document.onclick = function (event) {
+            var event = event || window.event;
+            console.log(event.timeStamp);
+            console.log(event.bubbles);
+            console.log(event.button);
+//            console.log(event.altKey);
+//            console.log(event.clientX);  可视区域
+//            console.log(event.clientY);
+//            console.log(event.pageX);    页面
+//            console.log(event.pageY);
+//            console.log(event.screenX);   浏览器
+//            console.log(event.screenY);
+
+//            console.log(event.target);
+//            console.log(event.srcElement);
+
+            //方法
+            event.stopPropagation();  //取消事件传播
+        }
+    </script>
+</body>
+</html>

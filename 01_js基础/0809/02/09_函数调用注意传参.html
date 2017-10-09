@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //求阶乘  注意传参
+        alert(getSum(Number(prompt("请输入你想求的阶乘之和的最大数字:"))));
+        //阶乘的函数
+        function getProduct(n) {
+            var product = 1;
+            for (var i = 1; i <= n; i++) {
+                product *= i;
+            }
+            return product;
+        }
+        //求和的函数
+        function getSum(n) {
+            var sum = 0;
+            for (var i = 1; i <= n; i++) {
+                sum += getProduct(i);
+            }
+            return sum;
+        }
+    </script>
+</body>
+</html>

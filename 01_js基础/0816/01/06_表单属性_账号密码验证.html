@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            text-align: center;
+        }
+        input {
+            width: 500px;
+            height: 60px;
+            display: inline-block;
+            border: 1px solid red;
+            margin: 10px auto;
+            font-size: 30px;
+            outline-style: none;
+            color: deeppink;
+            border: 1px solid red;
+            padding-left: 30px;
+        }
+        span {
+            color: #ccc;
+        }
+        .right {
+            border: 1px solid yellowgreen;
+        }
+        .wrong {
+            border: 1px solid red;
+        }
+        .right-span {
+            color: yellowgreen;
+        }
+        .wrong-span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+账号 <input type="text" />  <span>请输入账号</span> <br/>
+
+密码 <input type="password"/>   <span>请输入密码</span><br/>
+
+
+<script>
+    window.onload = function () {
+        // 京东
+        var inp = document.getElementsByTagName("input")[0];
+        var span = document.getElementsByTagName("span")[0];
+        // 绑定事件
+
+        inp.onblur = function () {
+            if (this.value.length >= 4 && this.value.length <= 20) {
+                this.className = "right";
+                span.className = "right-span";
+                span.innerText = "用户名可用";
+            }else {
+                this.className = "wrong";
+                span.className = "wrong-span";
+                span.innerText = "账号必须是4-20位之间";
+            }
+
+        }
+
+
+    }
+</script>
+</body>
+</html>
